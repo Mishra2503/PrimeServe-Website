@@ -20,6 +20,7 @@ export default function AboutPage() {
         headline="Your prime — never a middleman"
         subtext="PrimeServe began with a simple frustration: buying facility supplies meant juggling endless sources, scattered bills, and zero control. So we became the single name behind it all — sourcing it, delivering it in 24 hours, and invoicing it as one."
         variant="about"
+        align="left"
         cta={{ label: "Request a Quotation", href: "/contact" }}
       />
       <StoryMission />

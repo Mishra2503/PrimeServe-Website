@@ -74,8 +74,8 @@ function Cell({ value, isPrime }: { value: CellValue; isPrime?: boolean }) {
   if (value === "yes")
     return (
       <div className="flex justify-center">
-        <div className={cn("w-6 h-6 rounded-full flex items-center justify-center", isPrime ? "bg-brand-teal/15" : "bg-green-50")}>
-          <Check className={cn("h-3.5 w-3.5", isPrime ? "text-brand-teal" : "text-green-600")} />
+        <div className={cn("rounded-full flex items-center justify-center", isPrime ? "w-8 h-8 bg-brand-teal/25 shadow-[0_0_12px_2px_rgba(15,118,110,0.3)]" : "w-6 h-6 bg-green-50")}>
+          <Check className={cn(isPrime ? "h-4 w-4 text-brand-teal" : "h-3.5 w-3.5 text-green-600")} />
         </div>
       </div>
     );
@@ -108,7 +108,7 @@ export function ComparisonTable() {
   useReducedMotion();
 
   return (
-    <section className="section-padding bg-brand-nearWhite">
+    <section id="comparison" className="section-padding bg-brand-nearWhite">
       <div className="container max-w-[1200px]">
         <motion.div
           variants={staggerContainer}
@@ -141,14 +141,17 @@ export function ComparisonTable() {
                 <th className="text-left p-5 w-[40%] bg-white rounded-tl-2xl border-t border-l border-black/6">
                   <span className="text-sm font-semibold text-brand-black/40 uppercase tracking-wider">Feature</span>
                 </th>
-                <th className="p-5 bg-gradient-to-b from-brand-navy to-brand-navy/95 border-t border-brand-teal/20 relative">
+                <th className="p-5 bg-gradient-to-b from-[#0a1f2e] to-brand-navy border-t-2 border-brand-teal relative shadow-[0_0_40px_-6px_rgba(15,118,110,0.5)] ring-1 ring-brand-teal/30">
                   <div className="flex flex-col items-center gap-1">
-                    <div className="w-6 h-6 rounded bg-brand-teal flex items-center justify-center">
-                      <span className="text-white text-[9px] font-bold">P</span>
+                    <span className="px-2 py-0.5 rounded-full bg-brand-teal text-white text-[9px] font-bold uppercase tracking-wider mb-0.5">
+                      Best choice
+                    </span>
+                    <div className="w-7 h-7 rounded bg-brand-teal flex items-center justify-center shadow-[0_0_16px_4px_rgba(15,118,110,0.4)]">
+                      <span className="text-white text-[10px] font-bold">P</span>
                     </div>
                     <span className="font-display font-bold text-white text-sm">PrimeServe</span>
-                    <span className="text-[10px] text-brand-tealLight/70 font-medium">The prime</span>
-                    <span className="mt-1 px-2 py-0.5 rounded-full bg-brand-teal/20 text-brand-tealLight text-[10px] font-bold">
+                    <span className="text-[10px] text-brand-tealLight/80 font-medium">The prime</span>
+                    <span className="mt-1 px-2 py-0.5 rounded-full bg-brand-teal/25 text-brand-tealLight text-[10px] font-bold border border-brand-teal/30">
                       One name, end to end
                     </span>
                   </div>
@@ -190,8 +193,8 @@ export function ComparisonTable() {
                     </td>
                     <td
                       className={cn(
-                        "p-5 bg-gradient-to-b from-brand-navy/98 to-brand-navy/95 border-brand-teal/10",
-                        isLast && "border-b border-brand-teal/10"
+                        "p-5 bg-gradient-to-b from-[#0a1f2e] to-brand-navy border-x border-brand-teal/20",
+                        isLast && "border-b border-brand-teal/20"
                       )}
                     >
                       <Cell value={primeserve} isPrime />

@@ -252,25 +252,6 @@ export function ContactForm() {
         </div>
       </section>
 
-      {/* Bottom CTA band */}
-      <section className="py-16 bg-gradient-to-br from-brand-navy to-[#0d1f2e]">
-        <div className="container max-w-[1200px] text-center space-y-6">
-          <h2 className="font-display font-bold text-2xl lg:text-3xl text-white">
-            Ready to get your best price?
-          </h2>
-          <p className="text-white/55 max-w-lg mx-auto">
-            Send us your supply list and we&apos;ll get you a best-price quotation, fast — then deliver within 24 hours, anywhere in India.
-          </p>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <Button variant="primary" size="lg" asChild>
-              <Link href="#cf-name">
-                Request a Quotation
-                <ArrowRight className="h-4 w-4 ml-1" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

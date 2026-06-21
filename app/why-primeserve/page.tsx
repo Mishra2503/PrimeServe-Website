@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { PageHero } from "@/components/blocks/page-hero";
 import { ComparisonTable } from "@/components/blocks/comparison-table";
 import { DifferentiatorsCards } from "@/components/blocks/differentiators-cards";
-import { MetricsSection } from "@/components/blocks/metrics-section";
 import { TestimonialsStaggered } from "@/components/blocks/testimonials-staggered";
 import { FinalCTASection } from "@/components/blocks/final-cta-section";
 
@@ -17,15 +16,14 @@ export default function WhyPrimeServePage() {
     <>
       <PageHero
         badge="Why PrimeServe"
-        headline="One prime beats a dozen suppliers"
-        subtext="Scattered sources, opaque prices, messy paperwork, and zero control don't scale. Here's why offices, F&B, hospitality, and healthcare teams across India switch to PrimeServe."
+        headline="The smarter way to run facility procurement"
+        subtext="One name that sources every product, delivers in 24 hours, bills under a single invoice, and gives you live spend control — so you stop juggling suppliers and start running lean."
         variant="why"
         cta={{ label: "Request a Quotation", href: "/contact" }}
-        secondaryCta={{ label: "See the difference", href: "#metrics" }}
+        secondaryCta={{ label: "See the comparison", href: "#comparison" }}
       />
       <ComparisonTable />
       <DifferentiatorsCards />
-      <MetricsSection headline="Why teams choose PrimeServe" />
       <TestimonialsStaggered />
       <FinalCTASection
         headline="See the difference for your business"

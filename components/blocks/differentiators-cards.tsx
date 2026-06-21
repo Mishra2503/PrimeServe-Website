@@ -38,9 +38,9 @@ const differentiators = [
     backStat: "24h",
     backStatLabel: "order to doorstep",
     backDetail: "Fast, dependable delivery across the country keeps your operations running without a gap.",
-    iconColor: "text-blue-400",
-    iconBg: "bg-blue-400/10",
-    accentGrad: "from-blue-500/20 to-transparent",
+    iconColor: "text-brand-tealLight",
+    iconBg: "bg-brand-teal/10",
+    accentGrad: "from-brand-teal/20 to-transparent",
   },
   {
     icon: Gauge,
@@ -50,9 +50,9 @@ const differentiators = [
     backStat: "Live",
     backStatLabel: "spend visibility",
     backDetail: "See every order and every rupee in one place, with detailed month-end reports in a single click.",
-    iconColor: "text-purple-400",
-    iconBg: "bg-purple-400/10",
-    accentGrad: "from-purple-500/20 to-transparent",
+    iconColor: "text-brand-tealLight",
+    iconBg: "bg-brand-teal/10",
+    accentGrad: "from-brand-teal/20 to-transparent",
   },
 ];
 
@@ -83,26 +83,25 @@ function FlipCard({
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
-        style={{ transformStyle: "preserve-3d" }}
+        style={{ transformStyle: "preserve-3d", willChange: "transform" }}
         className="relative w-full h-full"
       >
         {/* Front */}
         <div
           className="absolute inset-0 rounded-2xl bg-white border border-black/5 shadow-sm p-7 flex flex-col"
-          style={{ backfaceVisibility: "hidden" }}
+          style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
         >
           <div className={`w-11 h-11 rounded-xl ${card.iconBg} flex items-center justify-center mb-4`}>
             <Icon className={`h-5 w-5 ${card.iconColor}`} />
           </div>
           <h3 className="font-display font-semibold text-xl text-brand-black mb-2 leading-snug">{card.title}</h3>
           <p className="text-brand-black/55 leading-relaxed text-sm flex-1">{card.description}</p>
-          <p className="text-xs text-brand-black/30 mt-3 font-medium">Hover to see proof →</p>
         </div>
 
         {/* Back */}
         <div
           className={`absolute inset-0 rounded-2xl overflow-hidden bg-gradient-to-br from-brand-navy via-[#0d1829] to-brand-navy border border-white/10 shadow-xl p-7 flex flex-col justify-between`}
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
         >
           {/* Accent glow */}
           <div className={`absolute top-0 left-0 w-full h-full bg-gradient-to-br ${card.accentGrad} opacity-60 pointer-events-none`} />
@@ -171,7 +170,7 @@ export function DifferentiatorsCards() {
             variants={fadeUp}
             className="text-body-lg text-brand-black/55 max-w-xl mx-auto"
           >
-            Four things that set PrimeServe apart from juggling suppliers and order-only marketplaces. Hover each card to see more.
+            Four things that set PrimeServe apart from juggling suppliers and order-only marketplaces.
           </motion.p>
         </motion.div>
 
