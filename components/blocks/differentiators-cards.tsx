@@ -75,29 +75,35 @@ const differentiators = [
 function FlipCard({
   card,
   reduced,
+  delay = 0,
 }: {
   card: (typeof differentiators)[0];
   reduced: boolean | null;
+  delay?: number;
 }) {
   const [flipped, setFlipped] = useState(false);
   const Icon = card.icon;
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       className="relative h-72 cursor-pointer"
       style={{ perspective: "1200px" }}
       onMouseEnter={() => !reduced && setFlipped(true)}
       onMouseLeave={() => !reduced && setFlipped(false)}
-      onClick={() => reduced && setFlipped((f) => !f)}
+      onClick={() => setFlipped((f) => !f)}
     >
-      {/* The rotating container — pure CSS transition, no Framer Motion */}
-      <div
+      {/* Rotating container — Framer Motion manages rotateY */}
+      <motion.div
+        animate={{ rotateY: flipped ? 180 : 0 }}
+        transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}
         className="relative w-full h-full"
         style={{
           transformStyle: "preserve-3d",
           WebkitTransformStyle: "preserve-3d",
-          transition: "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
-          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
         {/* ── Front ─────────────────────────────────── */}
@@ -151,8 +157,8 @@ function FlipCard({
             <div className="h-0.5 bg-gradient-to-r from-transparent via-brand-teal/40 to-transparent rounded-full" />
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -181,19 +187,16 @@ export function DifferentiatorsCards() {
           </motion.p>
         </motion.div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid sm:grid-cols-2 gap-5"
-        >
-          {differentiators.map((card) => (
-            <motion.div key={card.title} variants={fadeUp}>
-              <FlipCard card={card} reduced={prefersReduced} />
-            </motion.div>
+        <div className="grid sm:grid-cols-2 gap-5">
+          {differentiators.map((card, i) => (
+            <FlipCard
+              key={card.title}
+              card={card}
+              reduced={prefersReduced}
+              delay={i * 0.1}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

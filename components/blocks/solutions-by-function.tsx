@@ -16,7 +16,7 @@ import { staggerContainer, fadeUp } from "@/lib/motion-variants";
 // much of the previous card's header stays visible above the next card.
 const NAV_H   = 80;  // px — navbar height (top-20)
 const NOTCH_H = 72;  // px — header "notch" visible above the overlapping card
-const CARD_GAP = 10; // px — breathing room between stacked card edges
+const CARD_GAP = 28; // px — breathing room between stacked card edges
 
 // ── Card data ──────────────────────────────────────────────────
 const functionCards = [

@@ -103,10 +103,72 @@ function Cell({ value, isPrime }: { value: CellValue; isPrime?: boolean }) {
   return <span className="text-sm text-brand-black/60 text-center block font-medium">{value}</span>;
 }
 
+/* ── Brand logos ───────────────────────────────────────────── */
+
+function JumboTailLogo() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="JumboTail">
+      <circle cx="18" cy="18" r="18" fill="#1E4D28" />
+      {/* Stylised leaf-drop mark */}
+      <path
+        d="M19 7C19 7 26 11.5 25 18.5C24.3 22.5 21.5 24.5 18 26C18 26 20.5 21 18.5 17.5C16.5 14 10.5 13.5 10.5 13.5C10.5 13.5 13.5 7 19 7Z"
+        fill="white"
+        opacity="0.92"
+      />
+      <path
+        d="M17.5 26C16.2 23.5 14.5 21 12 19"
+        stroke="white"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        opacity="0.7"
+      />
+    </svg>
+  );
+}
+
+function UdaanLogo() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="Udaan">
+      <circle cx="18" cy="18" r="18" fill="#C01414" />
+      {/* Stylised upward wings / rupee stroke */}
+      <path
+        d="M11 20 C11 20 14 14 18 13 C22 12 25 14 25 14"
+        stroke="white"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <path
+        d="M11 24 C11 24 14 18 18 17 C22 16 25 18 25 18"
+        stroke="white"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.6"
+      />
+      <line x1="18" y1="12" x2="18" y2="26" stroke="white" strokeWidth="2.2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function LocalVendorLogo() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-label="Local Vendors">
+      {/* Person */}
+      <circle cx="11" cy="10" r="4" stroke="#00856B" strokeWidth="1.8" />
+      <path d="M3 28C3 22.5 6.5 18.5 11 18.5" stroke="#00856B" strokeWidth="1.8" strokeLinecap="round" />
+      {/* Package box */}
+      <rect x="17" y="19" width="15" height="12" rx="2" stroke="#00856B" strokeWidth="1.8" />
+      <line x1="17" y1="23.5" x2="32" y2="23.5" stroke="#00856B" strokeWidth="1.5" />
+      <line x1="24.5" y1="19" x2="24.5" y2="23.5" stroke="#00856B" strokeWidth="1.5" />
+    </svg>
+  );
+}
+
 const competitors = [
-  { key: "jumboTail", name: "JumboTail", initial: "J", tagline: "Online marketplace" },
-  { key: "udaan",     name: "Udaan",     initial: "U", tagline: "B2B platform" },
-  { key: "localVendors", name: "Local Vendors", initial: "LV", tagline: "Multiple suppliers" },
+  { key: "jumboTail",    name: "JumboTail",     Logo: JumboTailLogo,    tagline: "Online marketplace" },
+  { key: "udaan",        name: "Udaan",          Logo: UdaanLogo,        tagline: "B2B platform" },
+  { key: "localVendors", name: "Local Vendors",  Logo: LocalVendorLogo,  tagline: "Multiple suppliers" },
 ];
 
 export function ComparisonTable() {
@@ -182,23 +244,26 @@ export function ComparisonTable() {
                   </th>
 
                   {/* Competitors */}
-                  {competitors.map((c, i) => (
-                    <th
-                      key={c.key}
-                      className={cn(
-                        "p-5 bg-[#FAFBFC] border-b border-black/[0.07]",
-                        i > 0 && "border-l border-black/[0.05]"
-                      )}
-                    >
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className="w-9 h-9 rounded-xl bg-brand-black/[0.06] flex items-center justify-center">
-                          <span className="text-[11px] font-bold text-brand-black/40">{c.initial}</span>
+                  {competitors.map((c, i) => {
+                    const Logo = c.Logo;
+                    return (
+                      <th
+                        key={c.key}
+                        className={cn(
+                          "p-5 bg-[#FAFBFC] border-b border-black/[0.07]",
+                          i > 0 && "border-l border-black/[0.05]"
+                        )}
+                      >
+                        <div className="flex flex-col items-center gap-1.5">
+                          <div className="w-9 h-9 rounded-xl overflow-hidden flex items-center justify-center">
+                            <Logo />
+                          </div>
+                          <p className="font-display font-semibold text-brand-black/65 text-sm leading-tight">{c.name}</p>
+                          <span className="text-[10px] text-brand-black/35 bg-brand-black/[0.05] px-2 py-0.5 rounded-full font-medium">{c.tagline}</span>
                         </div>
-                        <p className="font-display font-semibold text-brand-black/65 text-sm leading-tight">{c.name}</p>
-                        <span className="text-[10px] text-brand-black/35 bg-brand-black/[0.05] px-2 py-0.5 rounded-full font-medium">{c.tagline}</span>
-                      </div>
-                    </th>
-                  ))}
+                      </th>
+                    );
+                  })}
                 </tr>
               </thead>
 

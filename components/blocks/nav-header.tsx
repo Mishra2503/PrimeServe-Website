@@ -72,7 +72,7 @@ export function NavHeader() {
                   {/* Active indicator — only visible when no tab is being hovered */}
                   {isActive && hoveredItem === null && (
                     <span
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-brand-navy to-brand-teal"
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#0B2C42] via-[#065E67] to-[#00856B]"
                       style={{ borderRadius: 9999 }}
                     />
                   )}
@@ -81,7 +81,7 @@ export function NavHeader() {
                   {isHovered && (
                     <motion.span
                       layoutId="nav-hover"
-                      className="absolute inset-0 rounded-full bg-gradient-to-r from-brand-navy to-brand-teal"
+                      className="absolute inset-0 rounded-full bg-gradient-to-r from-[#0B2C42] via-[#065E67] to-[#00856B]"
                       style={{ borderRadius: 9999 }}
                       transition={
                         prefersReduced
@@ -144,7 +144,7 @@ export function NavHeader() {
                     className={cn(
                       "block py-4 px-4 rounded-xl text-lg font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal",
                       pathname === item.href
-                        ? "bg-gradient-to-r from-brand-navy to-brand-teal text-white"
+                        ? "bg-gradient-to-r from-[#0B2C42] via-[#065E67] to-[#00856B] text-white"
                         : "text-brand-black hover:bg-black/5"
                     )}
                   >

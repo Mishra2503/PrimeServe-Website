@@ -385,7 +385,7 @@ export function PageHero({
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.15, ease }}
-              className={`font-display text-hero leading-[0.98] text-brand-black ${effectiveAlign === "center" ? "max-w-3xl" : "max-w-2xl"}`}
+              className={`font-display text-hero font-extrabold text-brand-black ${effectiveAlign === "center" ? "max-w-3xl" : "max-w-2xl"}`}
             >
               {variant === "solutions" && headline.includes(" run ") ? (
                 <>
