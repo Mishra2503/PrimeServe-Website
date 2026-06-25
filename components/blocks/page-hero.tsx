@@ -5,16 +5,19 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
-  Truck,
-  Sparkles,
-  ShieldCheck,
-  FileCheck,
-  CreditCard,
   BarChart3,
-  X as XIcon,
+  Building2,
   CheckCircle2,
+  ClipboardList,
+  CreditCard,
+  FileCheck,
+  PackageCheck,
+  ReceiptText,
+  Sparkles,
   Target,
+  Truck,
   Users,
+  X as XIcon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -35,9 +38,7 @@ interface PageHeroProps {
   secondaryCta?: PageHeroCta;
 }
 
-/* ---------- per-variant animated backgrounds ---------- */
-
-const SOLUTIONS_EASE = [0.21, 0.47, 0.32, 0.98] as const;
+const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
 const FLOAT_CHIPS = [
   {
@@ -61,7 +62,7 @@ const FLOAT_CHIPS = [
     range: 9,
   },
   {
-    icon: ShieldCheck,
+    icon: FileCheck,
     iconBg: "bg-blue-50 ring-1 ring-blue-100",
     iconColor: "text-blue-600",
     label: "Audit-Ready",
@@ -82,28 +83,20 @@ function SolutionsBackground({ reduced }: { reduced: boolean | null }) {
 
   return (
     <>
-      {/* Ambient orbs */}
       <motion.div
         animate={reduced ? {} : { scale: [1, 1.06, 1], opacity: [0.07, 0.11, 0.07] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-40 right-[-8%] w-[800px] h-[800px] rounded-full bg-brand-teal blur-[160px] pointer-events-none"
+        className="absolute -top-40 right-[-8%] h-[800px] w-[800px] rounded-full bg-brand-teal blur-[160px] pointer-events-none"
       />
-      <div className="absolute bottom-[-8%] left-[-6%] w-[600px] h-[600px] rounded-full bg-brand-navy/[0.04] blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 left-1/4 w-[400px] h-[300px] rounded-full bg-brand-teal/[0.03] blur-[80px] pointer-events-none" />
-
-      {/* SVG network */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
-        <defs>
-          <filter id="node-glow-sol">
-            <feGaussianBlur stdDeviation="3.5" result="blur" />
-            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
-        </defs>
+      <div className="absolute bottom-[-8%] left-[-6%] h-[600px] w-[600px] rounded-full bg-brand-navy/[0.04] blur-[120px] pointer-events-none" />
+      <svg className="absolute inset-0 h-full w-full pointer-events-none" aria-hidden="true">
         {nodes.slice(0, -1).map((n, i) => (
           <motion.line
             key={i}
-            x1={n.cx} y1={n.cy}
-            x2={nodes[i + 1].cx} y2={nodes[i + 1].cy}
+            x1={n.cx}
+            y1={n.cy}
+            x2={nodes[i + 1].cx}
+            y2={nodes[i + 1].cy}
             stroke="#0F766E"
             strokeWidth="1.5"
             strokeDasharray="7 5"
@@ -113,9 +106,11 @@ function SolutionsBackground({ reduced }: { reduced: boolean | null }) {
           />
         ))}
         {nodes.map((n, i) => (
-          <g key={i} filter="url(#node-glow-sol)">
+          <g key={i}>
             <motion.circle
-              cx={n.cx} cy={n.cy} r="5"
+              cx={n.cx}
+              cy={n.cy}
+              r="5"
               fill="#0F766E"
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.45 }}
@@ -123,7 +118,9 @@ function SolutionsBackground({ reduced }: { reduced: boolean | null }) {
             />
             {!reduced && (
               <motion.circle
-                cx={n.cx} cy={n.cy} r="5"
+                cx={n.cx}
+                cy={n.cy}
+                r="5"
                 fill="none"
                 stroke="#19B89A"
                 strokeWidth="1.5"
@@ -135,28 +132,27 @@ function SolutionsBackground({ reduced }: { reduced: boolean | null }) {
         ))}
       </svg>
 
-      {/* Floating metric chips */}
       {FLOAT_CHIPS.map((chip, i) => {
         const Icon = chip.icon;
         return (
           <motion.div
-            key={i}
+            key={chip.label}
             initial={{ opacity: 0, scale: 0.86, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: chip.delay, ease: SOLUTIONS_EASE }}
+            transition={{ duration: 0.6, delay: chip.delay, ease }}
             className={`hidden xl:block absolute ${chip.pos} z-20`}
           >
             <motion.div
               animate={reduced ? {} : { y: [0, -chip.range, 0] }}
               transition={{ duration: 4.2 + i * 0.8, repeat: Infinity, ease: "easeInOut" }}
-              className="flex items-center gap-2.5 bg-white/92 backdrop-blur-md ring-1 ring-black/[0.06] shadow-[0_8px_40px_-8px_rgba(11,31,51,0.18)] rounded-2xl px-3.5 py-2.5"
+              className="flex items-center gap-2.5 rounded-2xl bg-white/92 px-3.5 py-2.5 shadow-[0_8px_40px_-8px_rgba(11,31,51,0.18)] ring-1 ring-black/[0.06] backdrop-blur-md"
             >
-              <div className={`w-9 h-9 rounded-xl ${chip.iconBg} flex items-center justify-center shrink-0`}>
+              <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${chip.iconBg}`}>
                 <Icon className={`h-[18px] w-[18px] ${chip.iconColor}`} />
               </div>
               <div>
-                <p className="text-[11px] font-bold text-brand-navy leading-none">{chip.label}</p>
-                <p className="text-[10px] text-brand-black/45 mt-0.5 leading-none">{chip.sub}</p>
+                <p className="text-[11px] font-bold leading-none text-brand-navy">{chip.label}</p>
+                <p className="mt-0.5 text-[10px] leading-none text-brand-black/45">{chip.sub}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -166,220 +162,183 @@ function SolutionsBackground({ reduced }: { reduced: boolean | null }) {
   );
 }
 
-/* Problem chips for Why hero */
-const WHY_PROBLEMS = [
-  { label: "12 suppliers to chase", delay: 0.6, range: 6 },
-  { label: "Scattered bills & paperwork", delay: 0.85, range: 8 },
-  { label: "No spend visibility", delay: 1.1, range: 5 },
-];
-
-function WhyBackground({ reduced }: { reduced: boolean | null }) {
+function QuietBackground() {
   return (
     <>
-      {/* Ambient glow */}
-      <motion.div
-        animate={reduced ? {} : { scale: [1, 1.08, 1], opacity: [0.05, 0.09, 0.05] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-32 right-[-6%] w-[700px] h-[700px] rounded-full bg-brand-teal blur-[150px] pointer-events-none"
-      />
-      <div className="absolute bottom-0 left-[-4%] w-[500px] h-[400px] rounded-full bg-brand-navy/[0.04] blur-[100px] pointer-events-none" />
-
-      {/* Problem chips — crossed out */}
-      <div className="hidden xl:block absolute right-[6%] top-[18%] space-y-3 z-20">
-        {WHY_PROBLEMS.map((p, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: p.delay, ease: SOLUTIONS_EASE }}
-          >
-            <motion.div
-              animate={reduced ? {} : { y: [0, -p.range, 0] }}
-              transition={{ duration: 4 + i * 0.7, repeat: Infinity, ease: "easeInOut" }}
-              className="flex items-center gap-2.5 bg-white/80 backdrop-blur-md ring-1 ring-red-100 shadow-[0_6px_28px_-6px_rgba(11,31,51,0.14)] rounded-xl px-3.5 py-2"
-            >
-              <div className="w-7 h-7 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
-                <XIcon className="h-3.5 w-3.5 text-red-400" />
-              </div>
-              <p className="text-[11px] font-semibold text-brand-black/60 line-through leading-none">{p.label}</p>
-            </motion.div>
-          </motion.div>
-        ))}
-
-        {/* Resolution chip */}
-        <motion.div
-          initial={{ opacity: 0, x: 30, scale: 0.9 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 0.6, delay: 1.4, ease: SOLUTIONS_EASE }}
-        >
-          <motion.div
-            animate={reduced ? {} : { y: [0, -7, 0] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-            className="flex items-center gap-2.5 bg-brand-navy shadow-[0_8px_32px_-6px_rgba(15,118,110,0.4)] rounded-xl px-3.5 py-2.5 border border-brand-teal/30"
-          >
-            <div className="w-7 h-7 rounded-lg bg-brand-teal/20 flex items-center justify-center shrink-0">
-              <CheckCircle2 className="h-3.5 w-3.5 text-brand-tealLight" />
-            </div>
-            <div>
-              <p className="text-[11px] font-bold text-white leading-none">PrimeServe</p>
-              <p className="text-[10px] text-brand-tealLight/80 mt-0.5 leading-none">One name. End to end.</p>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </>
-  );
-}
-
-/* About hero right-side card */
-function AboutHeroCard({ reduced }: { reduced: boolean | null }) {
-  const pills = [
-    { icon: Truck, label: "24h delivery, pan-India", color: "text-brand-teal" },
-    { icon: FileCheck, label: "One invoice, every order", color: "text-brand-teal" },
-    { icon: Sparkles, label: "AI best-price quotes", color: "text-amber-400" },
-  ];
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 40, y: 10 }}
-      animate={{ opacity: 1, x: 0, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.45, ease: SOLUTIONS_EASE }}
-      className="hidden lg:block"
-    >
-      <motion.div
-        animate={reduced ? {} : { y: [0, -8, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        className="rounded-3xl bg-gradient-to-br from-brand-navy to-[#0d1829] border border-white/10 shadow-[0_24px_80px_-16px_rgba(11,31,51,0.5)] p-8 space-y-6"
-      >
-        {/* Mission */}
-        <div className="space-y-2">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-tealLight/60">Our Mission</span>
-          <p className="font-display font-bold text-xl text-white leading-snug">
-            Make facility supply effortless for every business in India.
-          </p>
-        </div>
-
-        <div className="h-px bg-white/8" />
-
-        {/* Metric pills */}
-        <div className="space-y-3">
-          {pills.map(({ icon: Icon, label, color }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.65 + i * 0.1, ease: "easeOut" }}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/8 hover:border-brand-teal/30 transition-colors"
-            >
-              <div className="w-8 h-8 rounded-lg bg-brand-teal/15 flex items-center justify-center shrink-0">
-                <Icon className={`h-4 w-4 ${color}`} />
-              </div>
-              <span className="text-sm font-medium text-white/80">{label}</span>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Bottom tagline */}
-        <div className="flex items-center gap-2 pt-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-teal animate-pulse" />
-          <span className="text-[11px] text-white/35 font-medium">Sourced · Delivered · Invoiced under one name</span>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-function AboutBackground({ reduced }: { reduced: boolean | null }) {
-  return (
-    <>
-      <motion.div
-        animate={reduced ? {} : { scale: [1, 1.06, 1], opacity: [0.06, 0.1, 0.06] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-40 right-[-8%] w-[700px] h-[700px] rounded-full bg-brand-teal blur-[150px] pointer-events-none"
-      />
-      <div className="absolute bottom-[-6%] left-[-4%] w-[500px] h-[400px] rounded-full bg-brand-navy/[0.04] blur-[100px] pointer-events-none" />
-    </>
-  );
-}
-
-/* Contact hero right-side card */
-function ContactHeroCard({ reduced }: { reduced: boolean | null }) {
-  const items = [
-    { icon: Sparkles, title: "AI best-price quote", sub: "Upload a list, get the best price in seconds" },
-    { icon: Truck, title: "24h delivery, pan-India", sub: "Order today, doorstep tomorrow" },
-    { icon: CreditCard, title: "Credit or instant pay", sub: "Buy the way your business prefers" },
-    { icon: FileCheck, title: "One invoice for everything", sub: "PO, DC & invoice — all under one name" },
-  ];
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: 40, y: 10 }}
-      animate={{ opacity: 1, x: 0, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.45, ease: SOLUTIONS_EASE }}
-      className="hidden lg:block"
-    >
-      <motion.div
-        animate={reduced ? {} : { y: [0, -6, 0] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-        className="rounded-3xl bg-white border border-black/6 shadow-[0_24px_80px_-16px_rgba(11,31,51,0.18)] p-8 space-y-5"
-      >
-        <div className="space-y-1">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-brand-teal/60">What you get</span>
-          <p className="font-display font-semibold text-lg text-brand-black leading-snug">
-            Everything you need, from one name.
-          </p>
-        </div>
-
-        <div className="space-y-3">
-          {items.map(({ icon: Icon, title, sub }, i) => (
-            <motion.div
-              key={title}
-              initial={{ opacity: 0, x: 16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: 0.65 + i * 0.09, ease: "easeOut" }}
-              className="flex items-start gap-3 p-3 rounded-xl hover:bg-brand-nearWhite transition-colors"
-            >
-              <div className="w-9 h-9 rounded-xl bg-brand-teal/10 flex items-center justify-center shrink-0 mt-0.5">
-                <Icon className="h-4 w-4 text-brand-teal" />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-brand-black leading-snug">{title}</p>
-                <p className="text-xs text-brand-black/45 mt-0.5 leading-snug">{sub}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-2 pt-1 border-t border-black/5">
-          <BarChart3 className="h-3.5 w-3.5 text-brand-teal/50" />
-          <span className="text-[11px] text-brand-black/35 font-medium">We respond within 24 hours, Mon–Sat.</span>
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-function ContactBackground({ reduced }: { reduced: boolean | null }) {
-  return (
-    <>
-      {/* Soft teal radial glow */}
-      <motion.div
-        animate={reduced ? {} : { scale: [1, 1.05, 1], opacity: [0.06, 0.1, 0.06] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-32 right-[-6%] w-[600px] h-[600px] rounded-full bg-brand-teal blur-[140px] pointer-events-none"
-      />
-      <div className="absolute bottom-0 left-[-4%] w-[400px] h-[300px] rounded-full bg-brand-navy/[0.03] blur-[90px] pointer-events-none" />
-      {/* Subtle dot grid */}
+      <div className="absolute right-0 top-0 h-[520px] w-[520px] rounded-full bg-brand-teal/[0.045] blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-[-12%] left-[-8%] h-[360px] w-[520px] rounded-full bg-brand-navy/[0.035] blur-[110px] pointer-events-none" />
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.018]"
+        className="absolute inset-0 opacity-[0.018] pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, #0F766E 1px, transparent 1px)",
-          backgroundSize: "36px 36px",
+          backgroundImage: "radial-gradient(circle, #0B1F33 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
         }}
       />
     </>
   );
 }
 
-const ease = [0.21, 0.47, 0.32, 0.98] as const;
+function WhyHeroVisual() {
+  const chaos = ["Supplier follow-ups", "Mismatched invoices", "No spend view"];
+  const controlled = [
+    { icon: Sparkles, label: "Source", detail: "Best-price quote" },
+    { icon: Truck, label: "Deliver", detail: "24h pan-India" },
+    { icon: ReceiptText, label: "Invoice", detail: "One clean trail" },
+    { icon: BarChart3, label: "Control", detail: "Live spend view" },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 32 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.35, ease }}
+      className="relative"
+    >
+      <div className="rounded-[1.75rem] bg-brand-navy p-6 shadow-[0_32px_90px_-30px_rgba(0,133,107,0.35)] ring-1 ring-white/10 relative overflow-hidden">
+        {/* Ambient glow accents */}
+        <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-brand-teal/20 blur-3xl pointer-events-none" />
+        <div className="absolute -left-8 bottom-8 h-32 w-32 rounded-full bg-brand-teal/10 blur-2xl pointer-events-none" />
+
+        {/* Before — faded pain chips */}
+        <div className="relative mb-4">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 mb-3">Before PrimeServe</p>
+          <div className="flex flex-wrap gap-2">
+            {chaos.map((item) => (
+              <div key={item} className="flex items-center gap-1.5 rounded-lg bg-white/5 border border-white/8 px-3 py-1.5">
+                <XIcon className="h-3 w-3 text-white/25 shrink-0" />
+                <span className="text-xs text-white/30 line-through decoration-white/20">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Teal gradient divider */}
+        <div className="h-px bg-gradient-to-r from-transparent via-brand-teal/40 to-transparent mb-5" />
+
+        {/* After PrimeServe */}
+        <div className="relative">
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-tealLight mb-3">After PrimeServe</p>
+          <h3 className="font-display text-2xl font-bold text-white leading-tight mb-5">
+            One responsible name<br />from quote to report.
+          </h3>
+
+          <div className="grid grid-cols-2 gap-3">
+            {controlled.map(({ icon: Icon, label, detail }) => (
+              <div key={label} className="rounded-xl border border-white/10 bg-white/[0.06] p-4 hover:bg-white/[0.1] transition-colors">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-teal/20">
+                    <Icon className="h-3.5 w-3.5 text-brand-tealLight" />
+                  </span>
+                  <span className="font-semibold text-white text-sm">{label}</span>
+                </div>
+                <p className="text-xs text-white/45">{detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Live status bar */}
+        <div className="relative mt-5 flex items-center gap-2.5 rounded-full border border-brand-teal/25 bg-brand-teal/10 px-4 py-2.5">
+          <span className="relative flex h-2 w-2 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-tealLight opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-teal" />
+          </span>
+          <span className="text-sm font-semibold text-brand-tealLight">PrimeServe stays accountable.</span>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function AboutHeroCard() {
+  const items = [
+    { icon: Building2, label: "Built from operations", sub: "Not a boardroom assumption" },
+    { icon: PackageCheck, label: "One supply owner", sub: "Sourcing, delivery, billing" },
+    { icon: BarChart3, label: "Spend clarity", sub: "Every order visible" },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 32 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.35, ease }}
+      className="rounded-[1.75rem] border border-brand-navy/10 bg-white p-6 shadow-[0_24px_70px_-38px_rgba(11,31,51,0.55)]"
+    >
+      <div className="rounded-2xl bg-brand-nearWhite p-5">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-teal">Our operating promise</p>
+        <h3 className="mt-3 font-display text-2xl font-bold leading-tight text-brand-navy">
+          Fewer vendors to manage. More control for the founder.
+        </h3>
+      </div>
+      <div className="mt-4 space-y-3">
+        {items.map(({ icon: Icon, label, sub }) => (
+          <div key={label} className="flex items-center gap-3 rounded-2xl border border-brand-navy/8 bg-white px-4 py-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-teal/10 text-brand-teal">
+              <Icon className="h-5 w-5" />
+            </span>
+            <span>
+              <span className="block font-semibold text-brand-black">{label}</span>
+              <span className="text-sm text-brand-black/50">{sub}</span>
+            </span>
+          </div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+function ContactHeroCard() {
+  const steps = [
+    { label: "Send", detail: "Your supply list or requirement" },
+    { label: "Receive", detail: "Best-price quotation with terms" },
+    { label: "Operate", detail: "Delivery, invoice, and updates" },
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 32 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6, delay: 0.35, ease }}
+      className="rounded-[1.75rem] border border-brand-navy/10 bg-white p-6 shadow-[0_24px_70px_-38px_rgba(11,31,51,0.55)]"
+    >
+      <div className="flex items-center justify-between gap-4 border-b border-brand-navy/10 pb-5">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-teal">Quote desk</p>
+          <h3 className="mt-2 font-display text-2xl font-bold text-brand-navy">What happens next</h3>
+        </div>
+        <span className="rounded-full bg-brand-teal/10 px-3 py-1.5 text-sm font-bold text-brand-teal">24h reply</span>
+      </div>
+
+      <div className="mt-5 space-y-4">
+        {steps.map((step, index) => (
+          <div key={step.label} className="grid grid-cols-[2.5rem_1fr] gap-3">
+            <div className="relative flex justify-center">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-navy text-sm font-bold text-white">
+                {index + 1}
+              </span>
+              {index < steps.length - 1 && <span className="absolute top-10 h-8 w-px bg-brand-navy/15" />}
+            </div>
+            <div className="rounded-2xl bg-brand-nearWhite px-4 py-3">
+              <p className="font-semibold text-brand-black">{step.label}</p>
+              <p className="text-sm text-brand-black/55">{step.detail}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-2xl bg-brand-teal/10 p-4">
+          <CreditCard className="h-5 w-5 text-brand-teal" />
+          <p className="mt-2 text-sm font-semibold text-brand-black">Credit or instant pay</p>
+        </div>
+        <div className="rounded-2xl bg-brand-teal/10 p-4">
+          <FileCheck className="h-5 w-5 text-brand-teal" />
+          <p className="mt-2 text-sm font-semibold text-brand-black">One invoice trail</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export function PageHero({
   badge,
@@ -391,40 +350,23 @@ export function PageHero({
   secondaryCta,
 }: PageHeroProps) {
   const prefersReduced = useReducedMotion();
-
-  const baseDelay = badge ? 0.05 : 0;
-  const headlineDelay = badge ? 0.15 : 0.05;
-  const subtextDelay = badge ? 0.25 : 0.15;
-  const ctaDelay = badge ? 0.38 : 0.28;
-
-  /* Split layout for about + contact variants */
-  const isSplit = variant === "about" || variant === "contact";
+  const isSplit = variant === "why" || variant === "about" || variant === "contact";
   const effectiveAlign = isSplit ? "left" : align;
+  const sectionTone = variant === "solutions" ? "bg-brand-nearWhite pt-36 pb-28" : "bg-white pt-32 pb-20";
 
   return (
-    <section className={`${variant === "solutions" ? "pt-36 pb-28" : "pt-32 pb-16"} bg-brand-nearWhite relative overflow-hidden`}>
-      {/* Default teal glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-brand-teal/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-brand-navy/[0.03] blur-3xl pointer-events-none" />
+    <section className={`${sectionTone} relative overflow-hidden`}>
+      {variant === "solutions" ? <SolutionsBackground reduced={prefersReduced} /> : <QuietBackground />}
 
-      {/* Variant decorations */}
-      {variant === "solutions" && <SolutionsBackground reduced={prefersReduced} />}
-      {variant === "why"       && <WhyBackground       reduced={prefersReduced} />}
-      {variant === "about"     && <AboutBackground     reduced={prefersReduced} />}
-      {variant === "contact"   && <ContactBackground   reduced={prefersReduced} />}
-
-      <div className="container max-w-[1200px] relative z-10">
-        <div className={isSplit ? "grid lg:grid-cols-2 gap-12 lg:gap-16 items-center" : ""}>
-
-          {/* Text column (or full-width for non-split) */}
+      <div className="container relative z-10 max-w-[1200px]">
+        <div className={isSplit ? "grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16" : ""}>
           <div className={`flex flex-col gap-5 ${effectiveAlign === "center" ? "items-center text-center" : "items-start"}`}>
-
             {badge && (
               <motion.span
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: baseDelay, ease }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-teal/10 text-brand-teal text-sm font-semibold"
+                transition={{ duration: 0.5, delay: 0.05, ease }}
+                className="inline-flex items-center gap-2 rounded-full border border-brand-teal/15 bg-brand-teal/10 px-3.5 py-1.5 text-sm font-semibold text-brand-teal"
               >
                 {variant === "solutions" ? (
                   <Sparkles className="h-3.5 w-3.5" />
@@ -433,23 +375,17 @@ export function PageHero({
                 ) : variant === "contact" ? (
                   <Target className="h-3.5 w-3.5" />
                 ) : (
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-teal" />
+                  <ClipboardList className="h-3.5 w-3.5" />
                 )}
                 {badge}
-                {variant === "solutions" && (
-                  <span className="relative flex h-1.5 w-1.5 shrink-0">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-brand-teal opacity-60 animate-ping" />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-teal" />
-                  </span>
-                )}
               </motion.span>
             )}
 
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: headlineDelay, ease }}
-              className={`font-display text-hero text-brand-black ${effectiveAlign === "center" ? "max-w-3xl" : "max-w-2xl"}`}
+              transition={{ duration: 0.55, delay: 0.15, ease }}
+              className={`font-display text-hero leading-[0.98] text-brand-black ${effectiveAlign === "center" ? "max-w-3xl" : "max-w-2xl"}`}
             >
               {variant === "solutions" && headline.includes(" run ") ? (
                 <>
@@ -463,10 +399,10 @@ export function PageHero({
 
             {subtext && (
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: subtextDelay, ease }}
-                className={`text-body-lg text-brand-black/55 ${effectiveAlign === "center" ? "max-w-2xl" : "max-w-xl"}`}
+                transition={{ duration: 0.5, delay: 0.25, ease }}
+                className={`text-body-lg leading-relaxed text-brand-black/60 ${effectiveAlign === "center" ? "max-w-2xl" : "max-w-xl"}`}
               >
                 {subtext}
               </motion.p>
@@ -474,47 +410,29 @@ export function PageHero({
 
             {cta && (
               <motion.div
-                initial={{ opacity: 0, y: 18 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: ctaDelay, ease }}
+                transition={{ duration: 0.5, delay: 0.36, ease }}
                 className={`flex flex-wrap gap-3 ${effectiveAlign === "center" ? "justify-center" : "justify-start"}`}
               >
-                {/* Pulsing primary CTA */}
-                <div className="relative inline-flex">
-                  {!prefersReduced && (
-                    <motion.div
-                      animate={{ scale: [1, 1.22, 1], opacity: [0.28, 0, 0.28] }}
-                      transition={{ duration: 2.8, repeat: Infinity, ease: "easeOut" }}
-                      className="absolute inset-0 rounded-full bg-brand-teal/25 pointer-events-none"
-                    />
-                  )}
-                  <Button variant="primary" size="lg" className="relative rounded-full" asChild>
-                    <Link href={cta.href}>
-                      {cta.label}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  </Button>
-                </div>
-
+                <Button variant="primary" size="lg" className="rounded-full" asChild>
+                  <Link href={cta.href}>
+                    {cta.label}
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
                 {secondaryCta && (
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="rounded-full border-brand-black/10 text-brand-black"
-                    asChild
-                  >
+                  <Button variant="outline" size="lg" className="rounded-full border-brand-navy/15 text-brand-navy" asChild>
                     <Link href={secondaryCta.href}>{secondaryCta.label}</Link>
                   </Button>
                 )}
               </motion.div>
             )}
-
           </div>
 
-          {/* Right visual column — only for split variants */}
-          {variant === "about"   && <AboutHeroCard   reduced={prefersReduced} />}
-          {variant === "contact" && <ContactHeroCard reduced={prefersReduced} />}
-
+          {variant === "why" && <WhyHeroVisual />}
+          {variant === "about" && <AboutHeroCard />}
+          {variant === "contact" && <ContactHeroCard />}
         </div>
       </div>
     </section>
