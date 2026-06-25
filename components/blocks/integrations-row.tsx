@@ -84,34 +84,29 @@ export function IntegrationsRow() {
         </motion.div>
 
         {/* Integration cards grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4"
-        >
-          <AnimatePresence mode="popLayout">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          <AnimatePresence mode="sync">
             {filtered.map(({ name, category, abbr, abbrevBg, syncs }) => {
               const isHovered = hoveredId === name;
               return (
                 <motion.div
                   key={name}
-                  layout
                   initial={{ opacity: 0, scale: 0.92 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.88 }}
-                  transition={{ duration: 0.25 }}
+                  transition={{ duration: 0.22 }}
                   onMouseEnter={() => setHoveredId(name)}
                   onMouseLeave={() => setHoveredId(null)}
                   className="relative flex flex-col items-center gap-3 p-5 rounded-2xl bg-brand-nearWhite border border-black/5 cursor-pointer overflow-hidden group"
                 >
-                  {/* Pulsing teal ring on hover */}
+                  {/* Teal ring on hover */}
                   {isHovered && !prefersReduced && (
                     <motion.span
-                      layoutId={`ring-${name}`}
                       className="absolute inset-0 rounded-2xl border-2 border-brand-teal/40"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.15 }}
                     />
                   )}
 
@@ -143,7 +138,7 @@ export function IntegrationsRow() {
               );
             })}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
         <motion.p
           initial={{ opacity: 0 }}

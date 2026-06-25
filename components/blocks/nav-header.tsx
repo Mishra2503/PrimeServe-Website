@@ -109,9 +109,9 @@ export function NavHeader() {
             </Button>
           </div>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — h-11 w-11 = 44px minimum touch target */}
           <button
-            className="md:hidden ml-auto p-2 rounded-lg hover:bg-black/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
+            className="md:hidden ml-auto h-11 w-11 flex items-center justify-center rounded-lg hover:bg-black/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}

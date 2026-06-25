@@ -69,7 +69,7 @@
   }
 
   .text-gradient-teal {
-    @apply bg-gradient-to-r from-brand-teal to-brand-tealLight bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#004F3F] to-brand-teal bg-clip-text text-transparent;
   }
 
   .section-padding {

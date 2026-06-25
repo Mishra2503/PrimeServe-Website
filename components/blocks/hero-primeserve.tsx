@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion, useReducedMotion, animate } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   ExternalLink,
@@ -33,15 +33,20 @@ function CountUp({
   React.useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    const controls = animate(0, to, {
-      duration: 1.6,
-      delay: startDelay,
-      ease: "easeOut",
-      onUpdate(v) {
-        node.textContent = `${Math.round(v)}${suffix}`;
-      },
-    });
-    return () => controls.stop();
+    let rafId: number;
+    const startTime = performance.now() + startDelay * 1000;
+    const duration = 1600;
+
+    function tick(now: number) {
+      const elapsed = Math.max(0, now - startTime);
+      const t = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      node!.textContent = `${Math.round(eased * to)}${suffix}`;
+      if (t < 1) rafId = requestAnimationFrame(tick);
+    }
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -55,9 +60,9 @@ export function HeroPrimeServe() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[#FAFBFC] pt-28 pb-24 lg:pt-24">
 
-      {/* Grid lines, masked to fade out */}
+      {/* Grid lines — hidden on mobile where mask-image support is unreliable */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.05]"
+        className="hidden sm:block absolute inset-0 pointer-events-none opacity-[0.05]"
         style={{
           backgroundImage:
             "linear-gradient(#0f766e 1px, transparent 1px), linear-gradient(90deg, #0f766e 1px, transparent 1px)",
@@ -69,14 +74,14 @@ export function HeroPrimeServe() {
         }}
       />
 
-      {/* Mesh glow orbs */}
+      {/* Mesh glow orbs — hidden on mobile to prevent teal bleed across narrow viewport */}
       <motion.div
         animate={reduced ? {} : { y: [0, -26, 0], opacity: [0.7, 1, 0.7] }}
         transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-24 right-[-6%] w-[640px] h-[640px] rounded-full bg-brand-teal/[0.10] blur-[130px] pointer-events-none"
+        className="hidden sm:block absolute -top-24 right-[-6%] w-[640px] h-[640px] rounded-full bg-brand-teal/[0.10] blur-[130px] pointer-events-none will-change-transform"
       />
-      <div className="absolute top-1/3 left-[-10%] w-[460px] h-[460px] rounded-full bg-[#19B89A]/[0.07] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-1/3 w-[420px] h-[420px] rounded-full bg-brand-navy/[0.04] blur-[110px] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/3 left-[-10%] w-[460px] h-[460px] rounded-full bg-[#19B89A]/[0.07] blur-[120px] pointer-events-none" />
+      <div className="hidden sm:block absolute bottom-[-10%] left-1/3 w-[420px] h-[420px] rounded-full bg-brand-navy/[0.04] blur-[110px] pointer-events-none" />
 
       <div className="container max-w-[1200px] relative z-10">
         <div className="grid lg:grid-cols-[1.05fr_1fr] gap-y-16 gap-x-10 lg:gap-x-16 items-center">
@@ -86,9 +91,9 @@ export function HeroPrimeServe() {
 
             {/* Eyebrow */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: EASE }}
+              transition={{ duration: 0.4, ease: EASE }}
               className="inline-flex items-center gap-2 rounded-full border border-brand-teal/20 bg-white/70 backdrop-blur pl-2 pr-3.5 py-1.5 shadow-sm"
             >
               <span className="relative flex h-2 w-2 shrink-0">
@@ -102,11 +107,11 @@ export function HeroPrimeServe() {
               </span>
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline — no delay so LCP is measured as early as possible */}
             <motion.h1
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
+              transition={{ duration: 0.45, ease: EASE }}
               className="mt-6 font-display text-[2.9rem] sm:text-6xl lg:text-[4.5rem] font-extrabold tracking-[-0.02em] leading-[1.02] text-brand-black"
             >
               Order facility supplies.{" "}
@@ -115,9 +120,9 @@ export function HeroPrimeServe() {
 
             {/* Subcopy */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.16, ease: EASE }}
+              transition={{ duration: 0.5, delay: 0.1, ease: EASE }}
               className="mt-6 text-brand-black font-medium text-base sm:text-lg leading-relaxed max-w-lg"
             >
               PrimeServe sources, delivers, and invoices all your housekeeping &amp;
@@ -127,9 +132,9 @@ export function HeroPrimeServe() {
 
             {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.24, ease: EASE }}
+              transition={{ duration: 0.5, delay: 0.18, ease: EASE }}
               className="mt-8 flex flex-wrap items-center gap-3"
             >
               <PulsingCTA href="/contact" label="Request a Quotation" reduced={!!reduced} />
@@ -148,9 +153,9 @@ export function HeroPrimeServe() {
 
             {/* Stat strip — confirmed facts only */}
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.34, ease: EASE }}
+              transition={{ duration: 0.5, delay: 0.26, ease: EASE }}
               className="mt-10 flex items-center gap-5 sm:gap-7"
             >
               <Stat label="delivery, pan-India">
@@ -170,8 +175,8 @@ export function HeroPrimeServe() {
             transition={{ duration: 0.75, delay: 0.2, ease: EASE }}
             className="relative mx-auto w-full max-w-[440px] lg:max-w-none lg:ml-12"
           >
-            {/* Glow behind card */}
-            <div className="absolute inset-6 rounded-[2.5rem] bg-brand-teal/25 blur-[70px] pointer-events-none" />
+            {/* Glow behind card — reduced on mobile to prevent green background wash */}
+            <div className="absolute inset-6 rounded-[2.5rem] bg-brand-teal/[0.06] sm:bg-brand-teal/25 blur-[20px] sm:blur-[70px] pointer-events-none" />
 
             {/* Dark dashboard card */}
             <div className="relative rounded-[1.75rem] bg-gradient-to-br from-[#0E2438] to-[#081523] ring-1 ring-white/10 shadow-[0_40px_100px_-30px_rgba(11,31,51,0.75)] p-6 overflow-hidden">
@@ -229,10 +234,11 @@ export function HeroPrimeServe() {
                   {BARS.map((h, i) => (
                     <motion.div
                       key={i}
-                      initial={{ height: "4%" }}
-                      animate={{ height: `${h}%` }}
+                      initial={{ scaleY: 0.04 }}
+                      animate={{ scaleY: h / 100 }}
                       transition={{ delay: 0.7 + i * 0.09, duration: 0.7, ease: EASE }}
-                      className={`flex-1 rounded-md ${
+                      style={{ transformOrigin: "bottom", willChange: "transform" }}
+                      className={`flex-1 h-full rounded-md ${
                         i === BARS.length - 1
                           ? "bg-gradient-to-t from-brand-teal to-brand-tealLight shadow-[0_0_14px_rgba(25,184,154,0.5)]"
                           : "bg-gradient-to-t from-white/[0.06] to-white/20"

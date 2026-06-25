@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { NavHeader } from "@/components/blocks/nav-header";
 import { Footer } from "@/components/blocks/footer";
@@ -104,6 +105,19 @@ export default function RootLayout({
         <NavHeader />
         <main>{children}</main>
         <Footer />
+        {/* Google Analytics — loads after page is interactive, does not block rendering */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-21NHENBKF4"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-21NHENBKF4');
+          `}
+        </Script>
       </body>
     </html>
   );
