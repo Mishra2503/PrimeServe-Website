@@ -16,8 +16,8 @@ interface FinalCTASectionProps {
 const METRICS = [
   {
     icon: Truck,
-    value: "24h",
-    label: "delivery",
+    value: "24 Hour",
+    label: "Delivery",
     sub: "order to doorstep, pan-India",
   },
   {
@@ -28,7 +28,7 @@ const METRICS = [
   },
   {
     icon: FileCheck,
-    value: "1 name",
+    value: "1 Roof",
     label: "PO · invoice · DC",
     sub: "clean books, every time",
   },
@@ -38,7 +38,7 @@ const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 
 export function FinalCTASection({
   headline = "Ready to take control of your supplies?",
-  subtext = "Send us your supply list and get a best-price quotation back fast — with 24-hour delivery, credit or instant payment, and every PO, invoice & DC under one name.",
+  subtext = "Send us your supply list and get a best-price quotation back fast with 24-hour delivery, credit or instant payment, and every PO, invoice & DC under one name.",
   ctaLabel = "Request a Quotation",
   ctaHref = "/contact",
 }: FinalCTASectionProps) {
@@ -138,7 +138,7 @@ export function FinalCTASection({
               <Button
                 variant="outline"
                 size="xl"
-                className="rounded-full border-white/15 text-white hover:bg-white/5 hover:border-white/30"
+                className="rounded-full bg-transparent border-white/30 text-white hover:bg-white/[0.10] hover:border-brand-teal/50"
                 asChild
               >
                 <Link href="https://app.primeservefs.com/" target="_blank" rel="noopener noreferrer">

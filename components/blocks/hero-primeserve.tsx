@@ -110,15 +110,7 @@ export function HeroPrimeServe() {
               className="mt-6 font-display text-[2.9rem] sm:text-6xl lg:text-[4.5rem] font-extrabold tracking-[-0.02em] leading-[1.02] text-brand-black"
             >
               Order facility supplies.{" "}
-              <span className="relative inline-block">
-                <span className="text-gradient-teal">Control every rupee.</span>
-                <motion.span
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.7, delay: 0.7, ease: EASE }}
-                  className="absolute -bottom-1 left-0 h-[3px] w-full origin-left rounded-full bg-gradient-to-r from-brand-teal to-brand-tealLight"
-                />
-              </span>
+              <span className="text-gradient-teal">Control every rupee.</span>
             </motion.h1>
 
             {/* Subcopy */}
@@ -126,10 +118,10 @@ export function HeroPrimeServe() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.16, ease: EASE }}
-              className="mt-6 text-brand-black/60 text-base sm:text-lg leading-relaxed max-w-lg"
+              className="mt-6 text-brand-black font-medium text-base sm:text-lg leading-relaxed max-w-lg"
             >
               PrimeServe sources, delivers, and invoices all your housekeeping &amp;
-              facility supplies under one name — AI best-price quotes, 24-hour
+              facility supplies under one roof, AI best-price quotes, 24-hour
               delivery, and total spend control in one portal.
             </motion.p>
 
@@ -162,12 +154,12 @@ export function HeroPrimeServe() {
               className="mt-10 flex items-center gap-5 sm:gap-7"
             >
               <Stat label="delivery, pan-India">
-                <CountUp to={24} suffix="h" startDelay={0.6} />
+                <CountUp to={24} suffix=" Hour" startDelay={0.6} />
               </Stat>
               <span className="h-9 w-px bg-brand-black/10" />
               <Stat label="or instant payment">Credit</Stat>
               <span className="h-9 w-px bg-brand-black/10" />
-              <Stat label="invoice · PO · DC, one name">1</Stat>
+              <Stat label=" for all PO, invoice & DC">1 Roof</Stat>
             </motion.div>
           </div>
 
@@ -176,7 +168,7 @@ export function HeroPrimeServe() {
             initial={{ opacity: 0, y: 34, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.75, delay: 0.2, ease: EASE }}
-            className="relative mx-auto w-full max-w-[440px] lg:max-w-none"
+            className="relative mx-auto w-full max-w-[440px] lg:max-w-none lg:ml-12"
           >
             {/* Glow behind card */}
             <div className="absolute inset-6 rounded-[2.5rem] bg-brand-teal/25 blur-[70px] pointer-events-none" />
@@ -201,7 +193,7 @@ export function HeroPrimeServe() {
                   </div>
                   <div>
                     <p className="text-white text-sm font-bold font-display leading-none">Spend Control</p>
-                    <p className="text-[11px] text-white/40 mt-1">Your PrimeServe portal</p>
+                    <p className="text-[11px] text-white/40 mt-1">Your Purchase portal</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5 rounded-full bg-emerald-500/15 px-2.5 py-1 ring-1 ring-emerald-400/30">
@@ -267,7 +259,7 @@ export function HeroPrimeServe() {
 
             {/* Floating chip · top-left — AI quote */}
             <FloatChip
-              className="hidden sm:flex absolute -top-5 -left-5 lg:-left-10"
+              className="hidden sm:flex absolute -top-12 -left-5 lg:-left-10"
               delay={0.7}
               reduced={!!reduced}
             >
@@ -282,7 +274,7 @@ export function HeroPrimeServe() {
 
             {/* Floating chip · bottom-right — 24h delivery, own-brand */}
             <FloatChip
-              className="hidden sm:flex absolute -bottom-6 -right-4 lg:-right-9"
+              className="hidden sm:flex absolute -bottom-12 -right-4 lg:-right-9"
               delay={0.95}
               reduced={!!reduced}
               floatRange={9}
@@ -310,7 +302,7 @@ function Stat({ children, label }: { children: React.ReactNode; label: string })
       <p className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-brand-black leading-none">
         {children}
       </p>
-      <p className="mt-1.5 text-[11px] text-brand-black/45 leading-tight max-w-[100px]">{label}</p>
+      <p className="mt-1.5 text-[11px] font-semibold bg-gradient-to-r from-brand-navy to-brand-teal bg-clip-text text-transparent leading-tight max-w-[110px]">{label}</p>
     </div>
   );
 }

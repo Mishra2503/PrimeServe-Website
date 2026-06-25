@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/blocks/page-hero";
+import { SolutionsHero } from "@/components/blocks/solutions-hero";
 import { SolutionsByFunction } from "@/components/blocks/solutions-by-function";
 import { WorkflowStepper } from "@/components/blocks/workflow-stepper";
-import { IntegrationsRow } from "@/components/blocks/integrations-row";
+import { CreditTermsSection } from "@/components/blocks/credit-terms-section";
 import { FAQSection } from "@/components/blocks/faq-section";
 import { FinalCTASection } from "@/components/blocks/final-cta-section";
 
@@ -15,17 +15,10 @@ export const metadata: Metadata = {
 export default function SolutionsPage() {
   return (
     <>
-      <PageHero
-        badge="Solutions"
-        headline="Everything you need to run facility supply"
-        subtext="From an AI best-price quote to 24-hour delivery, one-name billing, and audit-ready reports — PrimeServe handles your entire supply lifecycle so your team just orders and receives."
-        variant="solutions"
-        cta={{ label: "Request a Quotation", href: "/contact" }}
-        secondaryCta={{ label: "Explore Features", href: "#workflow" }}
-      />
+      <SolutionsHero />
       <SolutionsByFunction />
       <WorkflowStepper />
-      <IntegrationsRow />
+      <CreditTermsSection />
       <FAQSection />
       <FinalCTASection
         headline="See it working for your operations"

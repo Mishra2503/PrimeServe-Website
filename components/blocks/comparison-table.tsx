@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Check, X, Minus } from "lucide-react";
 import { staggerContainer, fadeUp } from "@/lib/motion-variants";
 import { cn } from "@/lib/utils";
@@ -12,9 +12,9 @@ interface CompRow {
   feature: string;
   tooltip?: string;
   primeserve: CellValue;
-  diy: CellValue;
-  marketplace: CellValue;
-  distributor: CellValue;
+  jumboTail: CellValue;
+  udaan: CellValue;
+  localVendors: CellValue;
   highlight?: boolean;
 }
 
@@ -22,51 +22,51 @@ const rows: CompRow[] = [
   {
     feature: "AI best-price quotation",
     tooltip: "Upload a list, get the best price for every item in seconds",
-    primeserve: "yes", diy: "no", marketplace: "partial", distributor: "no", highlight: true,
+    primeserve: "yes", jumboTail: "partial", udaan: "partial", localVendors: "no", highlight: true,
   },
   {
     feature: "24-hour delivery, pan-India",
     tooltip: "Order to doorstep within 24 hours, to one outlet or many",
-    primeserve: "yes", diy: "partial", marketplace: "partial", distributor: "partial",
+    primeserve: "yes", jumboTail: "partial", udaan: "partial", localVendors: "no",
   },
   {
     feature: "One name on PO, invoice & DC",
     tooltip: "Every document from PrimeServe, in one consistent format",
-    primeserve: "yes", diy: "no", marketplace: "no", distributor: "no", highlight: true,
+    primeserve: "yes", jumboTail: "no", udaan: "no", localVendors: "no", highlight: true,
   },
   {
     feature: "Credit or instant payment",
     tooltip: "Flexible credit terms or pay instantly — your choice",
-    primeserve: "yes", diy: "partial", marketplace: "partial", distributor: "partial",
+    primeserve: "yes", jumboTail: "yes", udaan: "yes", localVendors: "partial",
   },
   {
     feature: "Total spend-control dashboard",
     tooltip: "Live view of delivered, pending, and monthly spend",
-    primeserve: "yes", diy: "no", marketplace: "partial", distributor: "no", highlight: true,
+    primeserve: "yes", jumboTail: "no", udaan: "no", localVendors: "no", highlight: true,
   },
   {
     feature: "Audit-ready monthly reports",
     tooltip: "Detailed, accounting-ready statements every month",
-    primeserve: "yes", diy: "no", marketplace: "no", distributor: "no",
+    primeserve: "yes", jumboTail: "no", udaan: "no", localVendors: "no",
   },
   {
     feature: "One catalogue for all facility supplies",
     tooltip: "Housekeeping, pantry, cleaning, stationery and more",
-    primeserve: "yes", diy: "no", marketplace: "yes", distributor: "partial",
+    primeserve: "yes", jumboTail: "partial", udaan: "partial", localVendors: "no",
   },
   {
     feature: "You never manage a supplier",
     tooltip: "PrimeServe sources everything behind the scenes",
-    primeserve: "yes", diy: "no", marketplace: "no", distributor: "partial",
+    primeserve: "yes", jumboTail: "no", udaan: "no", localVendors: "no",
   },
   {
     feature: "Accounting / ERP-ready paperwork",
     tooltip: "Flows into Tally, Zoho, SAP and the GST portal",
-    primeserve: "yes", diy: "no", marketplace: "partial", distributor: "no",
+    primeserve: "yes", jumboTail: "partial", udaan: "partial", localVendors: "no",
   },
   {
-    feature: "Dedicated support",
-    primeserve: "yes", diy: "no", marketplace: "partial", distributor: "partial",
+    feature: "Dedicated account support",
+    primeserve: "yes", jumboTail: "partial", udaan: "partial", localVendors: "partial",
   },
 ];
 
@@ -74,24 +74,29 @@ function Cell({ value, isPrime }: { value: CellValue; isPrime?: boolean }) {
   if (value === "yes")
     return (
       <div className="flex justify-center">
-        <div className={cn("rounded-full flex items-center justify-center", isPrime ? "w-8 h-8 bg-brand-teal/25 shadow-[0_0_12px_2px_rgba(15,118,110,0.3)]" : "w-6 h-6 bg-green-50")}>
-          <Check className={cn(isPrime ? "h-4 w-4 text-brand-teal" : "h-3.5 w-3.5 text-green-600")} />
+        <div className={cn(
+          "rounded-full flex items-center justify-center shadow-sm",
+          isPrime
+            ? "w-9 h-9 bg-brand-teal text-white shadow-[0_0_16px_2px_rgba(0,133,107,0.25)]"
+            : "w-8 h-8 bg-green-50 ring-1 ring-green-200"
+        )}>
+          <Check className={cn("stroke-[2.5]", isPrime ? "h-[18px] w-[18px] text-white" : "h-4 w-4 text-green-600")} />
         </div>
       </div>
     );
   if (value === "no")
     return (
       <div className="flex justify-center">
-        <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center">
-          <X className="h-3.5 w-3.5 text-red-400" />
+        <div className="w-8 h-8 rounded-full bg-red-50 ring-1 ring-red-100 flex items-center justify-center">
+          <X className="h-4 w-4 text-red-400 stroke-[2.5]" />
         </div>
       </div>
     );
   if (value === "partial")
     return (
       <div className="flex justify-center">
-        <div className="w-6 h-6 rounded-full bg-amber-50 flex items-center justify-center">
-          <Minus className="h-3.5 w-3.5 text-amber-500" />
+        <div className="w-8 h-8 rounded-full bg-amber-50 ring-1 ring-amber-100 flex items-center justify-center">
+          <Minus className="h-4 w-4 text-amber-500 stroke-[2.5]" />
         </div>
       </div>
     );
@@ -99,17 +104,16 @@ function Cell({ value, isPrime }: { value: CellValue; isPrime?: boolean }) {
 }
 
 const competitors = [
-  { key: "diy", name: "Doing it yourself", tagline: "Multiple suppliers" },
-  { key: "marketplace", name: "B2B marketplace", tagline: "Order-only" },
-  { key: "distributor", name: "Local distributor", tagline: "Single category" },
+  { key: "jumboTail", name: "JumboTail", initial: "J", tagline: "Online marketplace" },
+  { key: "udaan",     name: "Udaan",     initial: "U", tagline: "B2B platform" },
+  { key: "localVendors", name: "Local Vendors", initial: "LV", tagline: "Multiple suppliers" },
 ];
 
 export function ComparisonTable() {
-  useReducedMotion();
-
   return (
-    <section id="comparison" className="section-padding bg-brand-nearWhite">
+    <section id="comparison" className="section-padding bg-white">
       <div className="container max-w-[1200px]">
+        {/* Header */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -117,109 +121,148 @@ export function ComparisonTable() {
           viewport={{ once: true, amount: 0.2 }}
           className="text-center space-y-4 mb-12"
         >
+          <motion.p
+            variants={fadeUp}
+            className="text-xs font-bold uppercase tracking-[0.2em] text-brand-teal"
+          >
+            How we compare
+          </motion.p>
           <motion.h2 variants={fadeUp} className="font-display text-section text-brand-black">
-            PrimeServe vs. the old way
+            PrimeServe vs. the alternatives
           </motion.h2>
           <motion.p
             variants={fadeUp}
-            className="text-body-lg text-brand-black/55 max-w-xl mx-auto"
+            className="text-body-lg text-brand-black/55 max-w-2xl mx-auto"
           >
-            Marketplaces help you order. Doing it yourself burns hours. PrimeServe is the single prime that sources, delivers, bills, and gives you control.
+            JumboTail and Udaan let you order. Local vendors leave you chasing.
+            PrimeServe is the single prime that sources, delivers, bills, and gives you total control.
           </motion.p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.55 }}
           className="overflow-x-auto"
         >
-          <table className="w-full min-w-[680px] border-separate border-spacing-0">
-            <thead>
-              <tr>
-                <th className="text-left p-5 w-[40%] bg-white rounded-tl-2xl border-t border-l border-black/6">
-                  <span className="text-sm font-semibold text-brand-black/40 uppercase tracking-wider">Feature</span>
-                </th>
-                <th className="p-5 bg-gradient-to-b from-[#0a1f2e] to-brand-navy border-t-2 border-brand-teal relative shadow-[0_0_40px_-6px_rgba(15,118,110,0.5)] ring-1 ring-brand-teal/30">
-                  <div className="flex flex-col items-center gap-1">
-                    <span className="px-2 py-0.5 rounded-full bg-brand-teal text-white text-[9px] font-bold uppercase tracking-wider mb-0.5">
-                      Best choice
+          {/* Outer card */}
+          <div className="min-w-[720px] rounded-2xl border border-black/[0.08] overflow-hidden shadow-[0_4px_24px_-8px_rgba(11,31,51,0.08)]">
+            <table className="w-full border-collapse">
+
+              {/* ── HEADER ─────────────────────────────────────── */}
+              <thead>
+                <tr>
+                  {/* Feature label */}
+                  <th className="text-left p-5 w-[36%] bg-[#FAFBFC] border-b border-r border-black/[0.07]">
+                    <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand-black/35">
+                      Feature
                     </span>
-                    <div className="w-7 h-7 rounded bg-brand-teal flex items-center justify-center shadow-[0_0_16px_4px_rgba(15,118,110,0.4)]">
-                      <span className="text-white text-[10px] font-bold">P</span>
-                    </div>
-                    <span className="font-display font-bold text-white text-sm">PrimeServe</span>
-                    <span className="text-[10px] text-brand-tealLight/80 font-medium">The prime</span>
-                    <span className="mt-1 px-2 py-0.5 rounded-full bg-brand-teal/25 text-brand-tealLight text-[10px] font-bold border border-brand-teal/30">
-                      One name, end to end
-                    </span>
-                  </div>
-                </th>
-                {competitors.map((c, i) => (
-                  <th
-                    key={c.key}
-                    className={cn(
-                      "p-5 bg-white border-t border-black/6",
-                      i === competitors.length - 1 && "rounded-tr-2xl border-r"
-                    )}
-                  >
-                    <div className="flex flex-col items-center gap-0.5">
-                      <span className="font-display font-semibold text-brand-black/60 text-sm">{c.name}</span>
-                      <span className="text-xs text-brand-black/35">{c.tagline}</span>
-                    </div>
                   </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map(({ feature, tooltip, primeserve, diy, marketplace, distributor, highlight }, i) => {
-                const isLast = i === rows.length - 1;
-                return (
-                  <tr key={feature} className="group">
-                    <td
-                      className={cn(
-                        "p-5 bg-white border-l border-black/6",
-                        highlight && "bg-brand-teal/[0.02]",
-                        isLast && "rounded-bl-2xl border-b"
-                      )}
-                    >
-                      <span className={cn("text-sm font-medium text-brand-black", highlight && "font-semibold")}>
-                        {feature}
+
+                  {/* PrimeServe — highlighted */}
+                  <th className="p-5 bg-white border-b border-black/[0.07] relative" style={{ borderTop: "3px solid #00856B" }}>
+                    <div className="flex flex-col items-center gap-2">
+                      <span className="px-2.5 py-0.5 rounded-full bg-brand-teal text-white text-[9px] font-extrabold uppercase tracking-[0.15em]">
+                        Best Choice
                       </span>
-                      {tooltip && (
-                        <p className="text-xs text-brand-black/35 mt-0.5 leading-snug">{tooltip}</p>
-                      )}
-                    </td>
-                    <td
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-teal to-brand-tealLight flex items-center justify-center shadow-[0_4px_14px_rgba(0,133,107,0.35)]">
+                        <span className="text-white text-sm font-extrabold leading-none">P</span>
+                      </div>
+                      <div className="text-center">
+                        <p className="font-display font-bold text-brand-navy text-base leading-tight">PrimeServe</p>
+                        <p className="text-xs font-semibold text-brand-teal mt-0.5">The prime</p>
+                      </div>
+                      <span className="px-2.5 py-1 rounded-full bg-brand-teal/10 text-brand-teal text-[11px] font-bold border border-brand-teal/20">
+                        One name, end to end
+                      </span>
+                    </div>
+                    {/* Bottom teal glow line */}
+                    <div className="absolute bottom-0 left-[20%] right-[20%] h-px bg-brand-teal/20" />
+                  </th>
+
+                  {/* Competitors */}
+                  {competitors.map((c, i) => (
+                    <th
+                      key={c.key}
                       className={cn(
-                        "p-5 bg-gradient-to-b from-[#0a1f2e] to-brand-navy border-x border-brand-teal/20",
-                        isLast && "border-b border-brand-teal/20"
+                        "p-5 bg-[#FAFBFC] border-b border-black/[0.07]",
+                        i > 0 && "border-l border-black/[0.05]"
                       )}
                     >
-                      <Cell value={primeserve} isPrime />
-                    </td>
-                    {[diy, marketplace, distributor].map((val, ci) => (
-                      <td
-                        key={ci}
-                        className={cn(
-                          "p-5 bg-white border-black/6",
-                          highlight && "bg-brand-teal/[0.01]",
-                          ci === 2 && "border-r",
-                          isLast && "border-b",
-                          isLast && ci === 2 && "rounded-br-2xl"
+                      <div className="flex flex-col items-center gap-1.5">
+                        <div className="w-9 h-9 rounded-xl bg-brand-black/[0.06] flex items-center justify-center">
+                          <span className="text-[11px] font-bold text-brand-black/40">{c.initial}</span>
+                        </div>
+                        <p className="font-display font-semibold text-brand-black/65 text-sm leading-tight">{c.name}</p>
+                        <span className="text-[10px] text-brand-black/35 bg-brand-black/[0.05] px-2 py-0.5 rounded-full font-medium">{c.tagline}</span>
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+
+              {/* ── BODY ───────────────────────────────────────── */}
+              <tbody>
+                {rows.map(({ feature, tooltip, primeserve, jumboTail, udaan, localVendors, highlight }, i) => {
+                  const isLast = i === rows.length - 1;
+                  const isEven = i % 2 === 0;
+                  return (
+                    <tr
+                      key={feature}
+                      className="group transition-colors hover:bg-brand-teal/[0.018]"
+                    >
+                      {/* Feature */}
+                      <td className={cn(
+                        "p-5 border-r border-black/[0.07] transition-colors",
+                        highlight ? "bg-brand-teal/[0.025]" : isEven ? "bg-white" : "bg-[#FAFBFC]",
+                        "group-hover:bg-brand-teal/[0.03]",
+                        !isLast && "border-b border-black/[0.05]"
+                      )}>
+                        <p className={cn(
+                          "text-sm text-brand-black leading-snug",
+                          highlight ? "font-semibold" : "font-medium"
+                        )}>
+                          {feature}
+                        </p>
+                        {tooltip && (
+                          <p className="text-xs text-brand-black/38 mt-0.5 leading-snug">{tooltip}</p>
                         )}
-                      >
-                        <Cell value={val} />
                       </td>
-                    ))}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+
+                      {/* PrimeServe cell */}
+                      <td className={cn(
+                        "p-5 transition-colors",
+                        highlight ? "bg-brand-teal/[0.07]" : "bg-brand-teal/[0.04]",
+                        "group-hover:bg-brand-teal/[0.09]",
+                        !isLast && "border-b border-brand-teal/[0.12]"
+                      )}>
+                        <Cell value={primeserve} isPrime />
+                      </td>
+
+                      {/* Competitor cells */}
+                      {[jumboTail, udaan, localVendors].map((val, ci) => (
+                        <td
+                          key={ci}
+                          className={cn(
+                            "p-5 border-l border-black/[0.05] transition-colors",
+                            highlight ? "bg-brand-teal/[0.012]" : isEven ? "bg-white" : "bg-[#FAFBFC]",
+                            "group-hover:bg-brand-teal/[0.018]",
+                            !isLast && "border-b border-black/[0.05]"
+                          )}
+                        >
+                          <Cell value={val} />
+                        </td>
+                      ))}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
         </motion.div>
 
+        {/* Legend */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -227,9 +270,24 @@ export function ComparisonTable() {
           transition={{ delay: 0.3 }}
           className="flex items-center justify-center gap-6 mt-6 text-xs text-brand-black/40"
         >
-          <span className="flex items-center gap-1.5"><Check className="h-3 w-3 text-brand-teal" /> Full support</span>
-          <span className="flex items-center gap-1.5"><Minus className="h-3 w-3 text-amber-500" /> Partial</span>
-          <span className="flex items-center gap-1.5"><X className="h-3 w-3 text-red-400" /> Not supported</span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-4 h-4 rounded-full bg-brand-teal flex items-center justify-center">
+              <Check className="h-2.5 w-2.5 text-white stroke-[3]" />
+            </span>
+            Full support
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-4 h-4 rounded-full bg-amber-100 flex items-center justify-center">
+              <Minus className="h-2.5 w-2.5 text-amber-500 stroke-[3]" />
+            </span>
+            Partial
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span className="w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
+              <X className="h-2.5 w-2.5 text-red-400 stroke-[3]" />
+            </span>
+            Not supported
+          </span>
         </motion.div>
       </div>
     </section>

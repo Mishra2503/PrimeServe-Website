@@ -191,7 +191,21 @@ export function SolutionsGrid() {
                   </div>
                 </div>
 
-                <div className="mt-auto pt-5 flex items-center gap-1.5 text-brand-tealLight text-sm font-semibold">
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {[
+                    { v: "12", l: "Total outlets", accent: false },
+                    { v: "47", l: "Products ordered", accent: true },
+                    { v: "₹62K", l: "Outstanding", accent: false },
+                    { v: "18d", l: "Credit days left", accent: true },
+                  ].map(({ v, l, accent }) => (
+                    <div key={l} className="rounded-xl bg-white/[0.04] ring-1 ring-white/10 p-3">
+                      <p className={`font-display text-lg font-bold leading-none ${accent ? "text-brand-tealLight" : "text-white"}`}>{v}</p>
+                      <p className="text-[10px] text-white/45 mt-1">{l}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-auto pt-4 flex items-center gap-1.5 text-brand-tealLight text-sm font-semibold">
                   Open dashboard <ArrowRight className="h-4 w-4" />
                 </div>
               </div>
@@ -231,11 +245,15 @@ export function SolutionsGrid() {
                 Detailed, accounting-ready reports every month — your finance team
                 reconciles in minutes, not weeks.
               </p>
-              <div className="mt-4 rounded-xl bg-gray-50 ring-1 ring-gray-100 p-3 space-y-1.5">
-                {[88, 64, 76].map((w, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-3 w-3 text-brand-teal shrink-0" />
-                    <span className="h-1.5 rounded-full bg-gray-200" style={{ width: `${w}%` }} />
+              <div className="mt-4 rounded-xl bg-gray-50 ring-1 ring-gray-100 p-3 space-y-2">
+                {[
+                  "Monthly PO & invoice summary",
+                  "GST-ready records for filing",
+                  "Excel & PDF export in one click",
+                ].map((point, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <CheckCircle2 className="h-3 w-3 text-brand-teal shrink-0 mt-0.5" />
+                    <span className="text-[11px] font-medium text-brand-black/70 leading-tight">{point}</span>
                   </div>
                 ))}
                 <div className="flex gap-1.5 pt-1">

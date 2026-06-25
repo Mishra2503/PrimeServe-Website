@@ -21,6 +21,11 @@ module.exports = {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
         body: ["var(--font-body)", "system-ui", "sans-serif"],
       },
+      fontSize: {
+        hero:     ["clamp(2.75rem,5.5vw,4.5rem)",  { lineHeight: "1.02", letterSpacing: "-0.02em" }],
+        section:  ["clamp(1.75rem,3.5vw,2.75rem)", { lineHeight: "1.1",  letterSpacing: "-0.015em" }],
+        "body-lg":["clamp(1rem,1.5vw,1.125rem)",   { lineHeight: "1.65" }],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

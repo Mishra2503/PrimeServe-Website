@@ -44,15 +44,15 @@ export function NavHeader() {
             : "py-5"
         )}
       >
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full relative flex items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <LogoFull iconSize={28} textSize="text-base" />
           </Link>
 
-          {/* Desktop nav pill */}
+          {/* Desktop nav pill — absolutely centred in the full header width */}
           <nav
-            className="hidden md:flex items-center gap-1 border border-brand-black/15 rounded-full px-2 py-1.5 bg-white"
+            className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 border border-brand-black/15 rounded-full px-2 py-1.5 bg-white"
             onMouseLeave={() => setHoveredItem(null)}
           >
             {navItems.map((item) => {
@@ -98,8 +98,8 @@ export function NavHeader() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
-            <Button variant="outline" size="sm" asChild>
+          <div className="hidden md:flex items-center gap-3 ml-auto">
+            <Button variant="outline" size="sm" className="bg-brand-navy/[0.07] border-brand-navy/25 text-brand-navy font-semibold hover:bg-brand-navy/[0.14] hover:border-brand-navy/40" asChild>
               <Link href="https://app.primeservefs.com/" target="_blank" rel="noopener noreferrer">
                 Go to store
               </Link>
@@ -111,7 +111,7 @@ export function NavHeader() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-black/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
+            className="md:hidden ml-auto p-2 rounded-lg hover:bg-black/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
