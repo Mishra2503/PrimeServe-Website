@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select } from "@/components/ui/select";
 import { fadeUp, staggerContainer } from "@/lib/motion-variants";
+import { submitLead } from "@/lib/lead-webhook";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -30,7 +31,7 @@ const contactChannels = [
   {
     icon: Calendar,
     title: "Book a meeting",
-    description: "Skip the form — schedule a 30-minute slot directly with our team.",
+    description: "Skip the form - schedule a 30-minute slot directly with our team.",
     href: "/contact",
     label: "Pick a time",
     type: "teal" as const,
@@ -47,10 +48,24 @@ const contactChannels = [
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const prefersReduced = useReducedMotion();
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    setSending(true);
+    await submitLead("contact-page", {
+      name: data.get("name")?.toString(),
+      company: data.get("company")?.toString(),
+      email: data.get("email")?.toString(),
+      phone: data.get("phone")?.toString(),
+      role: data.get("role")?.toString(),
+      message: data.get("message")?.toString(),
+    });
+    setSending(false);
     setSubmitted(true);
   }
 
@@ -99,7 +114,7 @@ export function ContactForm() {
                   Get in touch with our team
                 </h2>
                 <p className="text-brand-black/55 text-body-lg leading-relaxed">
-                  Our team is here to get you the best price on your facility supplies — fast. Drop us your list or a message and we&apos;ll be in touch the same day.
+                  Our team is here to get you the best price on your facility supplies - fast. Drop us your list or a message and we&apos;ll be in touch the same day.
                 </p>
               </motion.div>
 
@@ -164,13 +179,13 @@ export function ContactForm() {
                     <label htmlFor="cf-name" className="text-sm font-medium text-brand-black">
                       Full Name *
                     </label>
-                    <Input id="cf-name" placeholder="Rajesh Kumar" required />
+                    <Input id="cf-name" name="name" placeholder="Rajesh Kumar" required />
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="cf-company" className="text-sm font-medium text-brand-black">
                       Company *
                     </label>
-                    <Input id="cf-company" placeholder="Acme Foods Pvt. Ltd." required />
+                    <Input id="cf-company" name="company" placeholder="Acme Foods Pvt. Ltd." required />
                   </div>
                 </div>
 
@@ -178,7 +193,7 @@ export function ContactForm() {
                   <label htmlFor="cf-email" className="text-sm font-medium text-brand-black">
                     Work Email *
                   </label>
-                  <Input id="cf-email" type="email" placeholder="you@company.com" required />
+                  <Input id="cf-email" name="email" type="email" placeholder="you@company.com" required />
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
@@ -186,13 +201,13 @@ export function ContactForm() {
                     <label htmlFor="cf-phone" className="text-sm font-medium text-brand-black">
                       Phone (with country code)
                     </label>
-                    <Input id="cf-phone" type="tel" placeholder="+91 98765 43210" />
+                    <Input id="cf-phone" name="phone" type="tel" placeholder="+91 98765 43210" />
                   </div>
                   <div className="space-y-1.5">
                     <label htmlFor="cf-role" className="text-sm font-medium text-brand-black">
                       Your role *
                     </label>
-                    <Select id="cf-role" required defaultValue="">
+                    <Select id="cf-role" name="role" required defaultValue="">
                       <option value="" disabled>Select your role</option>
                       <option value="founder">Founder / Owner</option>
                       <option value="cfo">CFO / Finance Head</option>
@@ -209,7 +224,8 @@ export function ContactForm() {
                   </label>
                   <Textarea
                     id="cf-query"
-                    placeholder="e.g. We run 8 office locations and need monthly housekeeping, pantry & cleaning supplies — here's our typical list..."
+                    name="message"
+                    placeholder="e.g. We run 8 office locations and need monthly housekeeping, pantry & cleaning supplies - here's our typical list..."
                     rows={4}
                   />
                 </div>
@@ -220,8 +236,8 @@ export function ContactForm() {
                   <a href="#" className="text-brand-teal hover:underline">Privacy Policy</a>.
                 </label>
 
-                <Button type="submit" variant="primary" size="lg" className="w-full">
-                  Request a Quotation
+                <Button type="submit" variant="primary" size="lg" className="w-full" disabled={sending}>
+                  {sending ? "Sending..." : "Request a Quotation"}
                   <ArrowRight className="h-4 w-4 ml-1" />
                 </Button>
 

@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FormSelect } from "@/components/ui/radix-select";
 import { fadeUp, staggerContainer } from "@/lib/motion-variants";
+import { submitLead } from "@/lib/lead-webhook";
 
 const roleOptions = [
   { value: "founder",     label: "Founder / Owner",       icon: Briefcase  },
@@ -32,11 +33,23 @@ const industryOptions = [
 export function LeadMagnetBand() {
   const prefersReduced = useReducedMotion();
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
   const [role, setRole] = useState("");
   const [industry, setIndustry] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const data = new FormData(e.currentTarget);
+
+    setSending(true);
+    await submitLead("lead-magnet-band", {
+      name: data.get("name")?.toString(),
+      company: data.get("company")?.toString(),
+      email: data.get("email")?.toString(),
+      role,
+      industry,
+    });
+    setSending(false);
     setSubmitted(true);
   }
 
@@ -72,7 +85,7 @@ export function LeadMagnetBand() {
                 See what you&apos;d save on your facility supplies
               </motion.h2>
               <motion.p variants={fadeUp} className="text-white/60 text-body-lg">
-                Send us your current supply list and we&apos;ll return a best-price quotation — no obligation, no sales pitch.
+                Send us your current supply list and we&apos;ll return a best-price quotation - no obligation, no sales pitch.
               </motion.p>
               <motion.ul variants={staggerContainer} className="space-y-2 pt-2">
                 {[
@@ -120,6 +133,7 @@ export function LeadMagnetBand() {
                       <label htmlFor="lm-name" className="text-xs text-white/60 font-medium">Your name *</label>
                       <Input
                         id="lm-name"
+                        name="name"
                         placeholder="Rajesh Kumar"
                         required
                         className="bg-white/10 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-brand-tealLight"
@@ -129,6 +143,7 @@ export function LeadMagnetBand() {
                       <label htmlFor="lm-company" className="text-xs text-white/60 font-medium">Company *</label>
                       <Input
                         id="lm-company"
+                        name="company"
                         placeholder="Acme Foods Pvt. Ltd."
                         required
                         className="bg-white/10 border-white/10 text-white placeholder:text-white/30 focus-visible:ring-brand-tealLight"
@@ -164,6 +179,7 @@ export function LeadMagnetBand() {
                     <label htmlFor="lm-email" className="text-xs text-white/60 font-medium">Work email *</label>
                     <Input
                       id="lm-email"
+                      name="email"
                       type="email"
                       placeholder="you@company.com"
                       required
@@ -176,8 +192,9 @@ export function LeadMagnetBand() {
                     variant="primary"
                     size="xl"
                     className="w-full rounded-full"
+                    disabled={sending}
                   >
-                    Get My Free Quotation
+                    {sending ? "Sending..." : "Get My Free Quotation"}
                     <ArrowRight className="h-4 w-4 ml-1" />
                   </Button>
 

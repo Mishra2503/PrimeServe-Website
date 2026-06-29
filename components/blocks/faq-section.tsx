@@ -13,39 +13,39 @@ import { staggerContainer, fadeUp } from "@/lib/motion-variants";
 const faqs = [
   {
     q: "What is PrimeServe?",
-    a: "PrimeServe is India's procurement and supply platform for housekeeping and facility products. You order in one place; we source it, deliver it within 24 hours, and invoice everything under the PrimeServe name — with total spend control in one portal.",
+    a: "PrimeServe is India's procurement and supply platform for housekeeping and facility products. You order in one place; we source it, deliver it within 24 hours, and invoice everything under the PrimeServe name - with total spend control in one portal.",
   },
   {
     q: "How does PrimeServe delivery work?",
-    a: "Place an order or approve a quote, and PrimeServe sources and delivers it to your doorstep within 24 hours — anywhere in India, to a single outlet or many at once.",
+    a: "Place an order or approve a quote, and PrimeServe sources and delivers it to your doorstep within 24 hours - anywhere in India, to a single outlet or many at once.",
   },
   {
     q: "What is 'Request a Quotation'?",
-    a: "Upload your PO or requirements list and our AI instantly fetches the best available price for every item. Approve it and buy on credit or pay instantly — no calls, no haggling, no waiting.",
+    a: "Upload your PO or requirements list and our AI instantly fetches the best available price for every item. Approve it and buy on credit or pay instantly - no calls, no haggling, no waiting.",
   },
   {
     q: "Can I buy on credit?",
-    a: "Yes. You can buy on flexible credit terms or pay instantly — whichever suits your business. Credit is subject to approval.",
+    a: "Yes. You can buy on flexible credit terms or pay instantly - whichever suits your business. Credit is subject to approval.",
   },
   {
     q: "What products can I order from PrimeServe?",
-    a: "Housekeeping and cleaning supplies, pantry items, office stationery, facility tools and equipment, printing, and more — all from one PrimeServe catalogue.",
+    a: "Housekeeping and cleaning supplies, pantry items, office stationery, facility tools and equipment, printing, and more - all from one PrimeServe catalogue.",
   },
   {
     q: "How do billing and GST work?",
-    a: "Every order comes with one clean purchase order, a GST-compliant invoice, and a matching delivery challan — all from PrimeServe, in one consistent format your accounting team can reconcile in minutes.",
+    a: "Every order comes with one clean purchase order, a GST-compliant invoice, and a matching delivery challan - all from PrimeServe, in one consistent format your accounting team can reconcile in minutes.",
   },
   {
     q: "Does PrimeServe work with my accounting software?",
-    a: "Yes. Your PrimeServe invoices, POs, and reports flow into tools like Tally, Zoho Books, QuickBooks, SAP, and the GST portal — no rip-and-replace required.",
+    a: "Yes. Your PrimeServe invoices, POs, and reports flow into tools like Tally, Zoho Books, QuickBooks, SAP, and the GST portal - no rip-and-replace required.",
   },
   {
     q: "Which industries does PrimeServe serve?",
-    a: "We serve offices and coworking spaces, F&B and restaurants, hotels and hospitality, and hospitals and healthcare — across India.",
+    a: "We serve offices and coworking spaces, F&B and restaurants, hotels and hospitality, and hospitals and healthcare - across India.",
   },
   {
     q: "How much does PrimeServe cost?",
-    a: "There's no platform fee to get started — you pay for the supplies you order, at the best price our AI finds. Request a quotation to see pricing for your exact list.",
+    a: "There's no platform fee to get started - you pay for the supplies you order, at the best price our AI finds. Request a quotation to see pricing for your exact list.",
   },
   {
     q: "How do I get started with PrimeServe?",

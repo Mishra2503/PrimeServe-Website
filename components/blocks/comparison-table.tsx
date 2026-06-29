@@ -36,7 +36,7 @@ const rows: CompRow[] = [
   },
   {
     feature: "Credit or instant payment",
-    tooltip: "Flexible credit terms or pay instantly — your choice",
+    tooltip: "Flexible credit terms or pay instantly - your choice",
     primeserve: "yes", jumboTail: "yes", udaan: "yes", localVendors: "partial",
   },
   {
@@ -222,7 +222,7 @@ export function ComparisonTable() {
                     </span>
                   </th>
 
-                  {/* PrimeServe — highlighted */}
+                  {/* PrimeServe - highlighted */}
                   <th className="p-5 bg-white border-b border-black/[0.07] relative" style={{ borderTop: "3px solid #00856B" }}>
                     <div className="flex flex-col items-center gap-2">
                       <span className="px-2.5 py-0.5 rounded-full bg-brand-teal text-white text-[9px] font-extrabold uppercase tracking-[0.15em]">

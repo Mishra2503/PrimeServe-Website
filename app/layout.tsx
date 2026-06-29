@@ -22,11 +22,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://primeservefs.com"),
   title: {
-    default: "PrimeServe — Procurement & Supply Platform for Facilities | India",
+    default: "PrimeServe - Procurement & Supply Platform for Facilities | India",
     template: "%s | PrimeServe",
   },
   description:
-    "PrimeServe sources, delivers, and invoices your housekeeping & facility supplies under one name — AI best-price quotes, 24-hour delivery across India, credit or instant payment, and total spend control. Built for offices, F&B, hospitality, and healthcare.",
+    "PrimeServe sources, delivers, and invoices your housekeeping & facility supplies under one name - AI best-price quotes, 24-hour delivery across India, credit or instant payment, and total spend control. Built for offices, F&B, hospitality, and healthcare.",
   keywords: [
     "procurement platform India",
     "facility supplies procurement",
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://primeservefs.com",
     siteName: "PrimeServe",
-    title: "PrimeServe — Order it. We source, deliver & invoice it.",
+    title: "PrimeServe - Order it. We source, deliver & invoice it.",
     description:
-      "India's procurement & supply platform for housekeeping and facilities. AI best-price quotes, 24-hour delivery, credit or instant payment, and total spend control — all under the PrimeServe name.",
+      "India's procurement & supply platform for housekeeping and facilities. AI best-price quotes, 24-hour delivery, credit or instant payment, and total spend control - all under the PrimeServe name.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PrimeServe — Procurement & Supply, done for you",
+    title: "PrimeServe - Procurement & Supply, done for you",
     description:
       "Order facility & housekeeping supplies in one place. 24-hour delivery across India, AI best-price quotes, credit or instant pay, total spend control.",
   },
@@ -105,7 +105,7 @@ export default function RootLayout({
         <NavHeader />
         <main>{children}</main>
         <Footer />
-        {/* Google Analytics — loads after page is interactive, does not block rendering */}
+        {/* Google Analytics - loads after page is interactive, does not block rendering */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-21NHENBKF4"
           strategy="afterInteractive"

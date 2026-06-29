@@ -54,7 +54,7 @@ const HighlightCard: FC<HighlightCardProps> = ({
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000" />
         </div>
 
-        {/* Content — flex-1 so all cards grow to same height */}
+        {/* Content - flex-1 so all cards grow to same height */}
         <div className="p-8 relative z-10 flex flex-col items-center text-center flex-1">
           {icon && (
             <div className="relative mb-6">

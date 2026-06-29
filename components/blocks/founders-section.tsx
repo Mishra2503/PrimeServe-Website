@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Linkedin } from "lucide-react";
@@ -14,20 +14,60 @@ interface Founder {
   linkedinUrl?: string;
 }
 
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .map((w) => w[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
+
+/**
+ * Founder portrait. Falls back to clean initials if the image is missing or
+ * fails to load, so the card never shows a broken image. Drop a real photo at
+ * the imageUrl path (e.g. public/founders/amit-mishra.jpg) and it appears.
+ */
+function FounderAvatar({ name, title, imageUrl }: { name: string; title: string; imageUrl: string }) {
+  const [errored, setErrored] = useState(!imageUrl);
+
+  if (errored) {
+    return (
+      <div className="w-16 h-16 rounded-2xl shrink-0 flex items-center justify-center bg-gradient-to-br from-brand-teal to-brand-navy text-white font-display font-semibold text-lg">
+        {getInitials(name)}
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0">
+      <Image
+        src={imageUrl}
+        alt={`Portrait of ${name}, ${title} at PrimeServe`}
+        fill
+        className="object-cover"
+        sizes="64px"
+        onError={() => setErrored(true)}
+      />
+    </div>
+  );
+}
+
 const defaultFounders: Founder[] = [
   {
-    name: "Founder Name",
-    title: "Co-Founder & CEO",
-    bio: "Years spent running operations across multi-outlet businesses in Bengaluru — and living the daily chaos of juggling suppliers, chasing quotes, and reconciling scattered bills. Built the first version of PrimeServe to replace all of it with one prime.",
-    imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-    linkedinUrl: "#",
+    name: "Amit Mishra",
+    title: "Founder & CEO",
+    bio: "Years spent running operations across multi-outlet businesses in Bengaluru - and living the daily chaos of juggling suppliers, chasing quotes, and reconciling scattered bills. Built the first version of PrimeServe to replace all of it with one prime.",
+    imageUrl: "/founders/amit-mishra.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/amithmishra/",
   },
   {
-    name: "Co-Founder Name",
-    title: "Co-Founder & CTO",
+    name: "Sumit Mishra",
+    title: "Co-Founder",
     bio: "Product and engineering background across B2B platforms, with deep expertise in supply workflows, fast fulfilment, and India-specific compliance (GST). Architected PrimeServe's quotation, ordering, and spend-control engine.",
-    imageUrl: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-    linkedinUrl: "#",
+    imageUrl: "/founders/sumit-mishra.jpg",
+    linkedinUrl: "https://www.linkedin.com/in/sumit-mishra-9365442a0/",
   },
 ];
 
@@ -55,7 +95,7 @@ export function FoundersSection({ founders = defaultFounders }: FoundersSectionP
             variants={fadeUp}
             className="text-body-lg text-brand-black/55 max-w-xl mx-auto"
           >
-            Operators who became builders — now helping other teams replace supplier chaos with one prime.
+            Operators who became builders - now helping other teams replace supplier chaos with one prime.
           </motion.p>
         </motion.div>
 
@@ -74,15 +114,7 @@ export function FoundersSection({ founders = defaultFounders }: FoundersSectionP
               className="p-7 rounded-2xl bg-white border border-black/5 shadow-sm space-y-4 transition-shadow hover:shadow-md"
             >
               <div className="flex items-center gap-4">
-                <div className="relative w-16 h-16 rounded-2xl overflow-hidden shrink-0">
-                  <Image
-                    src={imageUrl}
-                    alt={`Portrait of ${name}, ${title} at PrimeServe`}
-                    fill
-                    className="object-cover"
-                    sizes="64px"
-                  />
-                </div>
+                <FounderAvatar name={name} title={title} imageUrl={imageUrl} />
                 <div className="min-w-0">
                   <h3 className="font-display font-semibold text-brand-black truncate">{name}</h3>
                   <p className="text-sm text-brand-teal font-medium">{title}</p>

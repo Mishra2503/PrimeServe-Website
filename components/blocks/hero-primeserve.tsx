@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 
 const EASE = [0.21, 0.47, 0.32, 0.98] as const;
 
-/* Monthly spend bars — illustrative portal data */
+/* Monthly spend bars - illustrative portal data */
 const BARS = [44, 58, 50, 66, 60, 78];
 
 /* ── CountUp ─────────────────────────────────────────────── */
@@ -60,7 +60,7 @@ export function HeroPrimeServe() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[#FAFBFC] pt-28 pb-24 lg:pt-24">
 
-      {/* Grid lines — hidden on mobile where mask-image support is unreliable */}
+      {/* Grid lines - hidden on mobile where mask-image support is unreliable */}
       <div
         className="hidden sm:block absolute inset-0 pointer-events-none opacity-[0.05]"
         style={{
@@ -74,7 +74,7 @@ export function HeroPrimeServe() {
         }}
       />
 
-      {/* Mesh glow orbs — hidden on mobile to prevent teal bleed across narrow viewport */}
+      {/* Mesh glow orbs - hidden on mobile to prevent teal bleed across narrow viewport */}
       <motion.div
         animate={reduced ? {} : { y: [0, -26, 0], opacity: [0.7, 1, 0.7] }}
         transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
@@ -107,7 +107,7 @@ export function HeroPrimeServe() {
               </span>
             </motion.div>
 
-            {/* Headline — no delay so LCP is measured as early as possible */}
+            {/* Headline - no delay so LCP is measured as early as possible */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -151,7 +151,7 @@ export function HeroPrimeServe() {
               </Button>
             </motion.div>
 
-            {/* Stat strip — confirmed facts only */}
+            {/* Stat strip - confirmed facts only */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -175,7 +175,7 @@ export function HeroPrimeServe() {
             transition={{ duration: 0.75, delay: 0.2, ease: EASE }}
             className="relative mx-auto w-full max-w-[440px] lg:max-w-none lg:ml-12"
           >
-            {/* Glow behind card — reduced on mobile to prevent green background wash */}
+            {/* Glow behind card - reduced on mobile to prevent green background wash */}
             <div className="absolute inset-6 rounded-[2.5rem] bg-brand-teal/[0.06] sm:bg-brand-teal/25 blur-[20px] sm:blur-[70px] pointer-events-none" />
 
             {/* Dark dashboard card */}
@@ -263,7 +263,7 @@ export function HeroPrimeServe() {
               </div>
             </div>
 
-            {/* Floating chip · top-left — AI quote */}
+            {/* Floating chip · top-left - AI quote */}
             <FloatChip
               className="hidden sm:flex absolute -top-12 -left-5 lg:-left-10"
               delay={0.7}
@@ -278,7 +278,7 @@ export function HeroPrimeServe() {
               </div>
             </FloatChip>
 
-            {/* Floating chip · bottom-right — 24h delivery, own-brand */}
+            {/* Floating chip · bottom-right - 24h delivery, own-brand */}
             <FloatChip
               className="hidden sm:flex absolute -bottom-12 -right-4 lg:-right-9"
               delay={0.95}

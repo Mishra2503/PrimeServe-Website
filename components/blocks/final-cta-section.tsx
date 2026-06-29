@@ -56,7 +56,7 @@ export function FinalCTASection({
         }}
       />
 
-      {/* Ambient teal glow — top-right */}
+      {/* Ambient teal glow - top-right */}
       <motion.div
         animate={reduced ? {} : { opacity: [0.12, 0.24, 0.12] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}

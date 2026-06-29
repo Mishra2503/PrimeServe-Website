@@ -37,16 +37,16 @@ const tourTabs: TourTab[] = [
     id: "quote",
     label: "Request a Quotation",
     tabIcon: Sparkles,
-    headline: "From requirements to best price — in seconds.",
+    headline: "From requirements to best price - in seconds.",
     subtext:
-      "Upload your PO or requirements list and our AI instantly fetches the best price for every item. Approve it and buy on credit or pay instantly — no calls, no haggling, no waiting.",
+      "Upload your PO or requirements list and our AI instantly fetches the best price for every item. Approve it and buy on credit or pay instantly - no calls, no haggling, no waiting.",
     metric: { value: "Seconds", label: "to a best-price quote" },
     badge: "AI Quotation",
     badgeColor: "bg-brand-teal/10 text-brand-teal",
     blocks: [
       { icon: Sparkles, heading: "AI best-price match", body: "Every item priced at the best available rate, automatically." },
-      { icon: FileText, heading: "Upload a PO or list", body: "Drop in a PO, spreadsheet, or simple list — we handle the rest." },
-      { icon: CreditCard, heading: "Credit or instant pay", body: "Buy your way — flexible credit terms or instant checkout." },
+      { icon: FileText, heading: "Upload a PO or list", body: "Drop in a PO, spreadsheet, or simple list - we handle the rest." },
+      { icon: CreditCard, heading: "Credit or instant pay", body: "Buy your way - flexible credit terms or instant checkout." },
       { icon: CheckCircle2, heading: "Approve and order", body: "Confirm the quote and your order moves straight to fulfilment." },
     ],
   },
@@ -56,14 +56,14 @@ const tourTabs: TourTab[] = [
     tabIcon: Truck,
     headline: "Sourced, packed, and delivered in 24 hours.",
     subtext:
-      "Once you order, PrimeServe sources everything and delivers to your door within 24 hours, across India. You never deal with a supplier — you deal with PrimeServe.",
+      "Once you order, PrimeServe sources everything and delivers to your door within 24 hours, across India. You never deal with a supplier - you deal with PrimeServe.",
     metric: { value: "24h", label: "order to doorstep, pan-India" },
     badge: "Fulfilment",
     badgeColor: "bg-blue-50 text-blue-700",
     blocks: [
       { icon: Truck, heading: "24-hour delivery", body: "Fast, reliable fulfilment to every outlet and branch." },
       { icon: ShieldCheck, heading: "We source it all", body: "One order covers housekeeping, pantry, cleaning, stationery and more." },
-      { icon: BarChart2, heading: "Multi-outlet ready", body: "Ship to one location or many — all from a single order." },
+      { icon: BarChart2, heading: "Multi-outlet ready", body: "Ship to one location or many - all from a single order." },
       { icon: CheckCircle2, heading: "Delivery confirmation", body: "Track every order from confirmed to delivered in your portal." },
     ],
   },
@@ -71,9 +71,9 @@ const tourTabs: TourTab[] = [
     id: "billing",
     label: "One-Name Billing",
     tabIcon: FileCheck,
-    headline: "Every PO, invoice & DC — under one name.",
+    headline: "Every PO, invoice & DC - under one name.",
     subtext:
-      "No scattered bills from different sources. Your purchase order, GST invoice, and delivery challan all come from PrimeServe — clean, consistent, and ready for your books every time.",
+      "No scattered bills from different sources. Your purchase order, GST invoice, and delivery challan all come from PrimeServe - clean, consistent, and ready for your books every time.",
     metric: { value: "1", label: "PO · invoice · DC, one name" },
     badge: "Billing",
     badgeColor: "bg-green-50 text-green-700",
@@ -81,7 +81,7 @@ const tourTabs: TourTab[] = [
       { icon: FileText, heading: "One clean PO", body: "A single, standardised purchase order for every requirement." },
       { icon: Receipt, heading: "GST invoice, ready", body: "Compliant GST invoices that drop straight into your books." },
       { icon: FileCheck, heading: "Matched delivery challan", body: "Every delivery arrives with a DC tied to your order." },
-      { icon: Lock, heading: "Consistent paperwork", body: "Same format, every time — no reconciliation guesswork." },
+      { icon: Lock, heading: "Consistent paperwork", body: "Same format, every time - no reconciliation guesswork." },
     ],
   },
   {
@@ -90,7 +90,7 @@ const tourTabs: TourTab[] = [
     tabIcon: Gauge,
     headline: "Total spend control, live in your portal.",
     subtext:
-      "See what's delivered, what's pending, and your monthly spend in real time. Every order is traceable by outlet, category, and date — so nothing slips by unnoticed.",
+      "See what's delivered, what's pending, and your monthly spend in real time. Every order is traceable by outlet, category, and date - so nothing slips by unnoticed.",
     metric: { value: "Live", label: "spend visibility, real-time" },
     badge: "Control",
     badgeColor: "bg-amber-50 text-amber-700",
@@ -107,7 +107,7 @@ const tourTabs: TourTab[] = [
     tabIcon: RefreshCw,
     headline: "A month-end your accounting team will love.",
     subtext:
-      "Detailed, accounting-ready reports every month — every PO, invoice, and DC, fully traceable. Your finance team reconciles in minutes, not weeks.",
+      "Detailed, accounting-ready reports every month - every PO, invoice, and DC, fully traceable. Your finance team reconciles in minutes, not weeks.",
     metric: { value: "Minutes", label: "to reconcile, not weeks" },
     badge: "Accounting",
     badgeColor: "bg-purple-50 text-purple-700",
@@ -157,7 +157,7 @@ export function ProductTourBento() {
             One platform, from quote to month-end
           </motion.h2>
           <motion.p variants={fadeUp} className="text-body-lg text-brand-black/55 max-w-xl mx-auto">
-            Every step is built for offices, F&amp;B, hospitality, and healthcare teams across India — not generic software.
+            Every step is built for offices, F&amp;B, hospitality, and healthcare teams across India - not generic software.
           </motion.p>
         </motion.div>
 

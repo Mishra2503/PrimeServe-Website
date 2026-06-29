@@ -199,7 +199,7 @@ function WhyHeroVisual() {
         <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-brand-teal/20 blur-3xl pointer-events-none" />
         <div className="absolute -left-8 bottom-8 h-32 w-32 rounded-full bg-brand-teal/10 blur-2xl pointer-events-none" />
 
-        {/* Before — faded pain chips */}
+        {/* Before - faded pain chips */}
         <div className="relative mb-4">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 mb-3">Before PrimeServe</p>
           <div className="flex flex-wrap gap-2">

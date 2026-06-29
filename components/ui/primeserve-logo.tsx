@@ -4,7 +4,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 /* ─────────────────────────────────────────────────────
-   PrimeServe brand logo — 3 arc strokes + baseline
+   PrimeServe brand logo - 3 arc strokes + baseline
    variant="light"  → teal arcs + black baseline (on white bg)
    variant="dark"   → teal arcs + white baseline (on dark bg)
    ───────────────────────────────────────────────────── */

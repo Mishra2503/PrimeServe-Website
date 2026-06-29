@@ -13,7 +13,7 @@ const SOLUTIONS = [
     icon: Package,
     category: "Procurement",
     headline: "One vendor. 24-hour delivery.",
-    body: "Upload a requirements list — PrimeServe sources everything and delivers pan-India in 24 hours. No supplier juggling, no chasing quotes.",
+    body: "Upload a requirements list - PrimeServe sources everything and delivers pan-India in 24 hours. No supplier juggling, no chasing quotes.",
     metric: "24h",
     metricSub: "order to doorstep",
   },
@@ -21,7 +21,7 @@ const SOLUTIONS = [
     icon: Zap,
     category: "Best Price",
     headline: "AI quote in seconds.",
-    body: "AI scans your list against live supplier pricing and returns the best available rate — before the next meeting even starts.",
+    body: "AI scans your list against live supplier pricing and returns the best available rate - before the next meeting even starts.",
     metric: "Seconds",
     metricSub: "to a best-price quote",
   },
@@ -29,7 +29,7 @@ const SOLUTIONS = [
     icon: FileText,
     category: "Compliance",
     headline: "One GST invoice, always.",
-    body: "One PO, one invoice, one DC — all from PrimeServe. Month-end reconciliation in minutes, not weeks. Audit-ready every time.",
+    body: "One PO, one invoice, one DC - all from PrimeServe. Month-end reconciliation in minutes, not weeks. Audit-ready every time.",
     metric: "GST",
     metricSub: "compliant, every order",
   },
@@ -37,7 +37,7 @@ const SOLUTIONS = [
     icon: BarChart3,
     category: "Visibility",
     headline: "Live spend. Zero surprises.",
-    body: "Real-time dashboard of every order, every outlet, every rupee — so founders and CFOs are never caught off guard at month-end.",
+    body: "Real-time dashboard of every order, every outlet, every rupee - so founders and CFOs are never caught off guard at month-end.",
     metric: "Live",
     metricSub: "across all outlets",
   },
@@ -111,7 +111,7 @@ export function SolutionsHero() {
           className="text-center text-base sm:text-[1.05rem] leading-relaxed max-w-[500px] mx-auto mb-14 text-brand-black/55"
         >
           Procurement, best-price quoting, GST compliance, and real-time spend
-          control — handled end-to-end.
+          control - handled end-to-end.
         </motion.p>
 
         {/* Solution cards grid */}

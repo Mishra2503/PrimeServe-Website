@@ -23,7 +23,7 @@ const STEPS = [
     num: "01",
     icon: ClipboardList,
     title: "Apply in 2 minutes",
-    desc: "Just your GSTIN and basic business info — no bank statements, no credit history required.",
+    desc: "Just your GSTIN and basic business info - no bank statements, no credit history required.",
   },
   {
     num: "02",
@@ -35,7 +35,7 @@ const STEPS = [
     num: "03",
     icon: CreditCard,
     title: "Order freely, pay in 30 days",
-    desc: "Place orders on credit and receive a proper GST invoice. Settle within 30 days — zero hidden fees.",
+    desc: "Place orders on credit and receive a proper GST invoice. Settle within 30 days - zero hidden fees.",
   },
 ];
 
@@ -84,7 +84,7 @@ export function CreditTermsSection() {
             variants={fadeUp}
             className="text-body-lg text-brand-black/55 max-w-xl mx-auto"
           >
-            Stop letting cash flow hold up your operations. Apply for a PrimeServe credit limit in 2 minutes — just your GSTIN and basic business info.
+            Stop letting cash flow hold up your operations. Apply for a PrimeServe credit limit in 2 minutes - just your GSTIN and basic business info.
           </motion.p>
         </motion.div>
 

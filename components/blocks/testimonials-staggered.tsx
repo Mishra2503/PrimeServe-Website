@@ -19,7 +19,7 @@ const testimonials = [
   },
   {
     quote:
-      "We upload our requirement list and the best price comes back instantly. We just approve, and it arrives — no calls, no chasing.",
+      "We upload our requirement list and the best price comes back instantly. We just approve, and it arrives - no calls, no chasing.",
     author: "Procurement Lead",
     role: "Restaurant Group (F&B)",
     company: "Pan-India",

@@ -41,7 +41,7 @@ export function SplashScreen() {
             exit={{ y: "100%", transition: { duration: 0.9, ease: curtainEase } }}
           />
 
-          {/* Teal ambient glow — sits between panels */}
+          {/* Teal ambient glow - sits between panels */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full bg-brand-teal/[0.07] blur-[120px] pointer-events-none" />
 
           {/* Centered wordmark */}

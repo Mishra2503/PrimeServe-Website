@@ -9,7 +9,7 @@ import { FinalCTASection } from "@/components/blocks/final-cta-section";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "PrimeServe is India's procurement & supply platform for housekeeping and facilities — we source, deliver in 24 hours, and invoice everything under one name. Our story, mission, and the team behind the platform.",
+    "PrimeServe is India's procurement & supply platform for housekeeping and facilities - we source, deliver in 24 hours, and invoice everything under one name. Our story, mission, and the team behind the platform.",
 };
 
 export default function AboutPage() {
@@ -17,8 +17,8 @@ export default function AboutPage() {
     <>
       <PageHero
         badge="About PrimeServe"
-        headline="Your prime — never a middleman"
-        subtext="PrimeServe began with a simple frustration: buying facility supplies meant juggling endless sources, scattered bills, and zero control. So we became the single name behind it all — sourcing it, delivering it in 24 hours, and invoicing it as one."
+        headline="Your prime - never a middleman"
+        subtext="PrimeServe began with a simple frustration: buying facility supplies meant juggling endless sources, scattered bills, and zero control. So we became the single name behind it all - sourcing it, delivering it in 24 hours, and invoicing it as one."
         variant="about"
         align="left"
         cta={{ label: "Request a Quotation", href: "/contact" }}

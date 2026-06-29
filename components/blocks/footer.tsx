@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Truck, CreditCard, Send } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, ShieldCheck, Truck, CreditCard } from "lucide-react";
 import { LogoFull } from "@/components/ui/primeserve-logo";
+import { NewsletterForm } from "@/components/blocks/newsletter-form";
 
 const quickLinks = [
   { label: "Home Page", href: "/" },
@@ -53,7 +54,7 @@ export function Footer() {
               <LogoFull iconSize={28} textSize="text-base" variant="dark" />
             </Link>
             <p className="text-sm text-white/55 leading-relaxed max-w-xs">
-              India&apos;s procurement &amp; supply platform for housekeeping and facilities. Order in one place, get 24-hour delivery, and control every rupee — all under one name.
+              India&apos;s procurement &amp; supply platform for housekeeping and facilities. Order in one place, get 24-hour delivery, and control every rupee - all under one name.
             </p>
             <div className="flex items-center gap-3 pt-1">
               {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -114,20 +115,7 @@ export function Footer() {
               Subscribe to our newsletter for exclusive deals, bulk discounts, and the latest product updates.
             </p>
             {/* Newsletter form */}
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 min-w-0 h-10 rounded-xl bg-white/10 border border-white/20 text-sm text-white placeholder:text-white/40 px-3 focus:outline-none focus:ring-2 focus:ring-brand-teal"
-              />
-              <button
-                type="submit"
-                className="h-10 px-4 rounded-xl bg-brand-teal hover:bg-brand-tealLight text-white text-sm font-semibold flex items-center gap-1.5 transition-colors shrink-0"
-              >
-                <Send className="h-3.5 w-3.5" />
-                Subscribe
-              </button>
-            </div>
+            <NewsletterForm />
             {/* Trust badges */}
             <div className="space-y-2 pt-1">
               {trustBadges.map(({ icon: Icon, label }) => (

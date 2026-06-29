@@ -9,9 +9,9 @@ import { TestimonialsStaggered } from "@/components/blocks/testimonials-staggere
 import { FinalCTASection } from "@/components/blocks/final-cta-section";
 
 export const metadata: Metadata = {
-  title: "PrimeServe — Order Facility Supplies. Control Every Rupee.",
+  title: "PrimeServe - Order Facility Supplies. Control Every Rupee.",
   description:
-    "PrimeServe sources, delivers, and invoices your housekeeping & facility supplies under one name — AI best-price quotes, 24-hour delivery across India, credit or instant payment, and total spend control. Built for offices, F&B, hospitality, and healthcare.",
+    "PrimeServe sources, delivers, and invoices your housekeeping & facility supplies under one name - AI best-price quotes, 24-hour delivery across India, credit or instant payment, and total spend control. Built for offices, F&B, hospitality, and healthcare.",
   alternates: { canonical: "/" },
 };
 

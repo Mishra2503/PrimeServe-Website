@@ -58,7 +58,7 @@ export function SolutionsGrid() {
             variants={fadeUp}
             className="text-body-lg text-brand-black/55 max-w-xl mx-auto"
           >
-            From an AI-powered quote to 24-hour delivery — every PO, invoice, and DC
+            From an AI-powered quote to 24-hour delivery - every PO, invoice, and DC
             under the PrimeServe name, with total spend control and audit-ready
             reports in one portal.
           </motion.p>
@@ -73,7 +73,7 @@ export function SolutionsGrid() {
           className="grid sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-5 items-stretch"
         >
 
-          {/* ── A · FEATURED — AI Quotation ───────────────── */}
+          {/* ── A · FEATURED - AI Quotation ───────────────── */}
           <motion.div variants={fadeUp} className="sm:col-span-2 lg:col-span-2">
             <div className="group relative h-full rounded-3xl bg-white ring-1 ring-gray-200/70 p-6 sm:p-8 shadow-[0_2px_20px_rgba(11,31,51,0.04)] hover:ring-brand-teal/30 hover:shadow-[0_24px_60px_-24px_rgba(11,31,51,0.18)] transition-all duration-300 overflow-hidden">
               <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-brand-teal/[0.07] blur-3xl pointer-events-none" />
@@ -89,7 +89,7 @@ export function SolutionsGrid() {
                   </h3>
                   <p className="mt-3 text-brand-black/60 text-sm leading-relaxed">
                     Upload your PO or requirements list. Our AI instantly fetches
-                    the best price for every item — then buy on credit or pay
+                    the best price for every item - then buy on credit or pay
                     instantly. No calls, no haggling, no waiting.
                   </p>
                   <div className="mt-5 flex flex-wrap gap-2">
@@ -136,7 +136,7 @@ export function SolutionsGrid() {
             </div>
           </motion.div>
 
-          {/* ── B · TALL DARK — Control dashboard ─────────── */}
+          {/* ── B · TALL DARK - Control dashboard ─────────── */}
           <motion.div
             variants={fadeUp}
             className="lg:col-start-3 lg:row-start-1 lg:row-span-2"
@@ -153,7 +153,7 @@ export function SolutionsGrid() {
                 <h3 className="mt-5 font-display text-2xl font-bold">Total spend control</h3>
                 <p className="mt-2 text-white/55 text-sm leading-relaxed">
                   A live portal showing what&apos;s delivered, what&apos;s pending, and
-                  your monthly spend — every order, fully traceable.
+                  your monthly spend - every order, fully traceable.
                 </p>
 
                 {/* Mini dashboard */}
@@ -223,7 +223,7 @@ export function SolutionsGrid() {
               </div>
               <h3 className="mt-3 font-display text-lg font-bold text-brand-black">From order to doorstep</h3>
               <p className="mt-2 text-brand-black/55 text-sm leading-relaxed">
-                Order once — we source everything and deliver within 24 hours.
+                Order once - we source everything and deliver within 24 hours.
               </p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {["PO", "Invoice", "DC"].map((t) => (
@@ -242,7 +242,7 @@ export function SolutionsGrid() {
               <CardIcon icon={FileCheck2} />
               <h3 className="mt-5 font-display text-lg font-bold text-brand-black">Audit-ready reports</h3>
               <p className="mt-2 text-brand-black/55 text-sm leading-relaxed">
-                Detailed, accounting-ready reports every month — your finance team
+                Detailed, accounting-ready reports every month - your finance team
                 reconciles in minutes, not weeks.
               </p>
               <div className="mt-4 rounded-xl bg-gray-50 ring-1 ring-gray-100 p-3 space-y-2">

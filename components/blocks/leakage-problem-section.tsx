@@ -11,7 +11,7 @@ const leakageScenarios = [
     icon: AlertTriangle,
     title: "Chasing quotes across suppliers",
     description:
-      "Hours lost every week on calls and WhatsApp just to compare prices — and you still never know if you got the best one.",
+      "Hours lost every week on calls and WhatsApp just to compare prices - and you still never know if you got the best one.",
   },
   {
     num: "02",
@@ -32,7 +32,7 @@ const leakageScenarios = [
     icon: Eye,
     title: "No real-time spend control",
     description:
-      "Overspend only shows up at quarter-end — once it has already hit your P&L.",
+      "Overspend only shows up at quarter-end - once it has already hit your P&L.",
   },
 ];
 
@@ -77,12 +77,12 @@ export function LeakageProblemSection() {
                   at month-end.
                 </p>
                 <p>
-                  Across multiple outlets or branches, it compounds fast — hours lost every week to coordination, and overspend you simply can&apos;t see.
+                  Across multiple outlets or branches, it compounds fast - hours lost every week to coordination, and overspend you simply can&apos;t see.
                 </p>
               </motion.div>
             </motion.div>
 
-            {/* Right: Scenario cards — uniform brand-teal accent */}
+            {/* Right: Scenario cards - uniform brand-teal accent */}
             <motion.div
               variants={staggerContainer}
               initial="hidden"

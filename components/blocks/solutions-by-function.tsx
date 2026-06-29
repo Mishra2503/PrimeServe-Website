@@ -14,9 +14,9 @@ import { staggerContainer, fadeUp } from "@/lib/motion-variants";
 // Each card sticks `stickyTop` px from the viewport top.
 // The gap between consecutive tops equals NOTCH_H, which is how
 // much of the previous card's header stays visible above the next card.
-const NAV_H   = 80;  // px — navbar height (top-20)
-const NOTCH_H = 72;  // px — header "notch" visible above the overlapping card
-const CARD_GAP = 28; // px — breathing room between stacked card edges
+const NAV_H   = 80;  // px - navbar height (top-20)
+const NOTCH_H = 72;  // px - header "notch" visible above the overlapping card
+const CARD_GAP = 28; // px - breathing room between stacked card edges
 
 // ── Card data ──────────────────────────────────────────────────
 const functionCards = [
@@ -27,7 +27,7 @@ const functionCards = [
     tagline: "Full visibility. Zero surprises.",
     heading: "See every rupee of facility spend, in real time.",
     description:
-      "Founders and CFOs get a live view of what's ordered, delivered, and spent across every outlet — so nothing slips by, and month-end is never a surprise.",
+      "Founders and CFOs get a live view of what's ordered, delivered, and spent across every outlet - so nothing slips by, and month-end is never a surprise.",
     outcomes: [
       { metric: "Live",   label: "spend visibility across outlets" },
       { metric: "1 name", label: "on every PO, invoice & DC" },
@@ -47,7 +47,7 @@ const functionCards = [
     tagline: "One order. One name. Done.",
     heading: "Stop juggling suppliers and chasing quotes.",
     description:
-      "Upload a requirements list and get the best price back in seconds. PrimeServe sources it all and delivers within 24 hours — you never manage a supplier again.",
+      "Upload a requirements list and get the best price back in seconds. PrimeServe sources it all and delivers within 24 hours - you never manage a supplier again.",
     outcomes: [
       { metric: "24h",     label: "order to doorstep, pan-India" },
       { metric: "Seconds", label: "to a best-price quote" },
@@ -67,7 +67,7 @@ const functionCards = [
     tagline: "Clean books. Audit-ready always.",
     heading: "Make month-end a single, simple afternoon.",
     description:
-      "Every PO, invoice, and DC comes from one name in one format — with a detailed monthly report your team can reconcile in minutes, not weeks.",
+      "Every PO, invoice, and DC comes from one name in one format - with a detailed monthly report your team can reconcile in minutes, not weeks.",
     outcomes: [
       { metric: "1",       label: "PO · invoice · DC, one name" },
       { metric: "Minutes", label: "to reconcile, not weeks" },
@@ -104,7 +104,7 @@ function StickyCard({
   const reduced = useReducedMotion();
   const isLast  = index === total - 1;
 
-  // Subtle scale-back as the next card slides over — gives depth.
+  // Subtle scale-back as the next card slides over - gives depth.
   // Last card never scales (nothing covers it).
   const scale = useTransform(
     scrollYProgress,
@@ -134,7 +134,7 @@ function StickyCard({
       >
         <div className="container max-w-[1200px]">
 
-          {/* ── Card shell — identical style for all 3 ─────────── */}
+          {/* ── Card shell - identical style for all 3 ─────────── */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#091826] via-[#0E2438] to-[#091826] border border-brand-tealLight/10 shadow-[0_24px_64px_-16px_rgba(9,24,38,0.8)]">
 
             {/* Teal top accent */}
@@ -207,7 +207,7 @@ function StickyCard({
                 </ul>
               </div>
 
-              {/* Right column — metric tiles */}
+              {/* Right column - metric tiles */}
               <div className="grid grid-cols-3 gap-3 md:gap-4">
                 {card.outcomes.map(({ metric, label }) => (
                   <div
@@ -258,8 +258,8 @@ export function SolutionsByFunction() {
               variants={fadeUp}
               className="text-body-lg mx-auto max-w-xl text-brand-black/55"
             >
-              PrimeServe gives every stakeholder — founders, operations, and
-              finance — exactly the control they need.
+              PrimeServe gives every stakeholder - founders, operations, and
+              finance - exactly the control they need.
             </motion.p>
           </motion.div>
         </div>

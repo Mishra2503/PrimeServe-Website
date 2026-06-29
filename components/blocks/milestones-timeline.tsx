@@ -9,7 +9,7 @@ const visionItems = [
     year: "2025",
     title: "PrimeServe is founded",
     description:
-      "PrimeServe launches as India's first single-prime facility supply platform — one name to source, deliver, and invoice everything.",
+      "PrimeServe launches as India's first single-prime facility supply platform - one name to source, deliver, and invoice everything.",
     icon: "🚀",
     detail: "One name replaces dozens of suppliers for offices, F&B, hospitality, and healthcare teams across India.",
     side: "right",
@@ -18,7 +18,7 @@ const visionItems = [
     year: "2026",
     title: "Pan-India reach",
     description:
-      "Deliver to every major city and tier-2 market across India within 24 hours — for every kind of business that needs facility supplies.",
+      "Deliver to every major city and tier-2 market across India within 24 hours - for every kind of business that needs facility supplies.",
     icon: "🗺️",
     detail: "Building the logistics and sourcing network to make 24-hour delivery a guarantee, not a goal.",
     side: "left",
@@ -29,14 +29,14 @@ const visionItems = [
     description:
       "AI-powered procurement that predicts reorder points, negotiates best prices automatically, and keeps your costs optimal without manual effort.",
     icon: "⚡",
-    detail: "Sourcing intelligence that works in the background — so your team never chases a quote or tracks a delivery again.",
+    detail: "Sourcing intelligence that works in the background - so your team never chases a quote or tracks a delivery again.",
     side: "right",
   },
   {
     year: "2028",
     title: "Enterprise prime",
     description:
-      "Become the default procurement prime for enterprise multi-outlet operations across India — tens of thousands of locations, one name.",
+      "Become the default procurement prime for enterprise multi-outlet operations across India - tens of thousands of locations, one name.",
     icon: "🏆",
     detail: "The single prime trusted by India's largest hospitality, healthcare, and office networks.",
     side: "left",
@@ -149,7 +149,7 @@ export function MilestonesTimeline() {
             Our Vision
           </motion.h2>
           <motion.p variants={fadeUp} className="text-body-lg text-brand-black/55 max-w-xl mx-auto">
-            Founded in 2025, here&apos;s where we&apos;re headed — and what we&apos;re building for every business in India.
+            Founded in 2025, here&apos;s where we&apos;re headed - and what we&apos;re building for every business in India.
           </motion.p>
         </motion.div>
 

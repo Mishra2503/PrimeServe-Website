@@ -28,7 +28,7 @@ const steps = [
     time: "< 2 min",
     title: "Request a Quotation",
     description:
-      "Upload your PO or requirements list. Our AI returns the best available price for every item — in seconds, no calls required.",
+      "Upload your PO or requirements list. Our AI returns the best available price for every item - in seconds, no calls required.",
     bullets: [
       "Upload a PO, Excel list, or type items manually",
       "AI matches best price across our supplier network",
@@ -43,7 +43,7 @@ const steps = [
     time: "Instant",
     title: "Approve & Order",
     description:
-      "Review the quote and confirm. Buy on flexible credit terms or pay instantly — whatever suits your business.",
+      "Review the quote and confirm. Buy on flexible credit terms or pay instantly - whatever suits your business.",
     bullets: [
       "Review line-item quote before confirming",
       "Apply 30-day credit or pay immediately",
@@ -58,12 +58,12 @@ const steps = [
     time: "Same day",
     title: "We Source It",
     description:
-      "PrimeServe sources every product directly. You never deal with a supplier — you deal with one name: us.",
+      "PrimeServe sources every product directly. You never deal with a supplier - you deal with one name: us.",
     bullets: [
       "Best-price supplier verified for every SKU",
       "Stock confirmed across our warehouse network",
       "Quality check before dispatch",
-      "You get one order, one name — no supplier chaos",
+      "You get one order, one name - no supplier chaos",
     ],
     control: "Sourced for you, behind the scenes",
   },
@@ -73,7 +73,7 @@ const steps = [
     time: "24 hours",
     title: "24-Hour Delivery",
     description:
-      "Your order is packed and delivered to your door within 24 hours — to a single outlet or many, anywhere in India.",
+      "Your order is packed and delivered to your door within 24 hours - to a single outlet or many, anywhere in India.",
     bullets: [
       "Dispatched from our nearest warehouse",
       "Real-time tracking via your portal",
@@ -88,7 +88,7 @@ const steps = [
     time: "On delivery",
     title: "One-Name Billing",
     description:
-      "Your purchase order, GST invoice, and delivery challan all arrive from PrimeServe — clean, consistent, ready for your books.",
+      "Your purchase order, GST invoice, and delivery challan all arrive from PrimeServe - clean, consistent, ready for your books.",
     bullets: [
       "Single GST-compliant invoice from PrimeServe",
       "Matching PO and delivery challan included",
@@ -103,7 +103,7 @@ const steps = [
     time: "Real-time",
     title: "Track & Control",
     description:
-      "See what's delivered, what's pending, and your spend in real time — by outlet, category, and date — right in your portal.",
+      "See what's delivered, what's pending, and your spend in real time - by outlet, category, and date - right in your portal.",
     bullets: [
       "Live dashboard: delivered vs pending vs in transit",
       "Filter by outlet, category, or date range",
@@ -382,11 +382,11 @@ export function WorkflowStepper() {
             From quote to delivery to month-end
           </motion.h2>
           <motion.p variants={fadeUp} className="text-body-lg text-brand-black/55 max-w-xl mx-auto">
-            PrimeServe handles every step — you just order and receive.
+            PrimeServe handles every step - you just order and receive.
           </motion.p>
         </motion.div>
 
-        {/* Step pills — teal active (matches navbar accent) */}
+        {/* Step pills - teal active (matches navbar accent) */}
         <div className="flex flex-wrap gap-2 justify-center mb-10">
           {steps.map((s, i) => {
             const SIcon = s.icon;

@@ -55,7 +55,7 @@ export function IntegrationsRow() {
             variants={fadeUp}
             className="text-body-lg text-brand-black/55 max-w-xl mx-auto"
           >
-            Your PrimeServe invoices, POs, and reports flow straight into your accounting, ERP, and compliance tools — no rip-and-replace required.
+            Your PrimeServe invoices, POs, and reports flow straight into your accounting, ERP, and compliance tools - no rip-and-replace required.
           </motion.p>
         </motion.div>
 

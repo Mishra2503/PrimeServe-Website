@@ -10,7 +10,7 @@ const differentiators = [
     icon: ShieldCheck,
     title: "The prime, not a middleman",
     description:
-      "You order from one name. PrimeServe sources every product itself and delivers under its own brand — no supplier juggling, no chasing, ever.",
+      "You order from one name. PrimeServe sources every product itself and delivers under its own brand - no supplier juggling, no chasing, ever.",
     backStat: "1 name",
     backStatLabel: "PO · invoice · DC",
     bullets: [
@@ -42,7 +42,7 @@ const differentiators = [
     icon: Truck,
     title: "24-hour delivery, pan-India",
     description:
-      "Order today, receive tomorrow — to a single outlet or many, anywhere in India. Reliable fulfilment so you never stock out.",
+      "Order today, receive tomorrow - to a single outlet or many, anywhere in India. Reliable fulfilment so you never stock out.",
     backStat: "24h",
     backStatLabel: "order to doorstep",
     bullets: [
@@ -58,11 +58,11 @@ const differentiators = [
     icon: Gauge,
     title: "Total spend control + reports",
     description:
-      "A live portal shows what's delivered, what's pending, and your monthly spend — plus audit-ready reports your finance team will love.",
+      "A live portal shows what's delivered, what's pending, and your monthly spend - plus audit-ready reports your finance team will love.",
     backStat: "Live",
     backStatLabel: "spend visibility",
     bullets: [
-      "Live portal — every order, every rupee",
+      "Live portal - every order, every rupee",
       "One-click audit-ready monthly reports",
       "Finance-team-approved GST paperwork",
     ],
@@ -96,7 +96,7 @@ function FlipCard({
       onMouseLeave={() => !reduced && setFlipped(false)}
       onClick={() => setFlipped((f) => !f)}
     >
-      {/* Rotating container — Framer Motion manages rotateY */}
+      {/* Rotating container - Framer Motion manages rotateY */}
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
         transition={{ duration: 0.65, ease: [0.4, 0, 0.2, 1] }}

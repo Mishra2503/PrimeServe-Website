@@ -9,7 +9,7 @@ import { FinalCTASection } from "@/components/blocks/final-cta-section";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "PrimeServe sources, delivers in 24 hours, and invoices your housekeeping & facility supplies under one name — AI best-price quotes, credit or instant payment, and total spend control for offices, F&B, hospitality, and healthcare across India.",
+    "PrimeServe sources, delivers in 24 hours, and invoices your housekeeping & facility supplies under one name - AI best-price quotes, credit or instant payment, and total spend control for offices, F&B, hospitality, and healthcare across India.",
 };
 
 export default function SolutionsPage() {

@@ -50,7 +50,7 @@ export function NavHeader() {
             <LogoFull iconSize={28} textSize="text-base" />
           </Link>
 
-          {/* Desktop nav pill — absolutely centred in the full header width */}
+          {/* Desktop nav pill - absolutely centred in the full header width */}
           <nav
             className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-1 border border-brand-black/15 rounded-full px-2 py-1.5 bg-white"
             onMouseLeave={() => setHoveredItem(null)}
@@ -69,7 +69,7 @@ export function NavHeader() {
                     (isActive && hoveredItem === null) || isHovered ? "text-white" : "text-brand-black"
                   )}
                 >
-                  {/* Active indicator — only visible when no tab is being hovered */}
+                  {/* Active indicator - only visible when no tab is being hovered */}
                   {isActive && hoveredItem === null && (
                     <span
                       className="absolute inset-0 rounded-full bg-gradient-to-r from-[#0B2C42] via-[#065E67] to-[#00856B]"
@@ -77,7 +77,7 @@ export function NavHeader() {
                     />
                   )}
 
-                  {/* Hover indicator — animates across tabs via layoutId */}
+                  {/* Hover indicator - animates across tabs via layoutId */}
                   {isHovered && (
                     <motion.span
                       layoutId="nav-hover"
@@ -109,7 +109,7 @@ export function NavHeader() {
             </Button>
           </div>
 
-          {/* Mobile hamburger — h-11 w-11 = 44px minimum touch target */}
+          {/* Mobile hamburger - h-11 w-11 = 44px minimum touch target */}
           <button
             className="md:hidden ml-auto h-11 w-11 flex items-center justify-center rounded-lg hover:bg-black/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-teal"
             onClick={() => setMobileOpen(!mobileOpen)}

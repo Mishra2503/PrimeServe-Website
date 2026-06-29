@@ -26,7 +26,7 @@ const painPoints = [
 const solutions = [
   { icon: Zap,       label: "AI Sourcing",     detail: "Best price fetched in seconds from live supplier data" },
   { icon: Truck,     label: "24h Delivery",    detail: "Order to doorstep, one outlet or many, pan-India" },
-  { icon: FileCheck, label: "One Invoice",     detail: "PO, DC and GST invoice — all from one name" },
+  { icon: FileCheck, label: "One Invoice",     detail: "PO, DC and GST invoice - all from one name" },
   { icon: BarChart3, label: "Live Portal",     detail: "Every order, every rupee, every outlet. In real time" },
 ];
 
@@ -68,7 +68,7 @@ export function StoryMission() {
 
         <div className="space-y-5">
 
-          {/* ── ACT 01 — THE PROBLEM ──────────────────────── */}
+          {/* ── ACT 01 - THE PROBLEM ──────────────────────── */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export function StoryMission() {
             <div className="relative p-8 lg:p-12">
               <p className="text-[10px] font-extrabold uppercase tracking-[0.28em] text-red-400/80 mb-6 flex items-center gap-2">
                 <AlertTriangle className="h-3 w-3" />
-                Act 01 — The Problem
+                Act 01 - The Problem
               </p>
 
               <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-start">
@@ -93,7 +93,7 @@ export function StoryMission() {
                     We had eight vendor names<br className="hidden lg:block" /> and zero visibility.
                   </h3>
                   <p className="text-white/60 leading-relaxed mb-4">
-                    Our founders ran multi-outlet businesses in Bengaluru — F&amp;B, hospitality, office
+                    Our founders ran multi-outlet businesses in Bengaluru - F&amp;B, hospitality, office
                     management. Every restock cycle meant the same ordeal: calling eight different vendors,
                     waiting 48 hours for quotes, receiving deliveries from strangers under names you&apos;d
                     never budgeted for.
@@ -122,7 +122,7 @@ export function StoryMission() {
             </div>
           </motion.div>
 
-          {/* ── ACT 02 — THE INSIGHT ──────────────────────── */}
+          {/* ── ACT 02 - THE INSIGHT ──────────────────────── */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -132,7 +132,7 @@ export function StoryMission() {
           >
             <p className="text-[10px] font-extrabold uppercase tracking-[0.28em] text-brand-teal mb-6 flex items-center gap-2">
               <Lightbulb className="h-3 w-3" />
-              Act 02 — The Turning Point
+              Act 02 - The Turning Point
             </p>
 
             <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
@@ -149,7 +149,7 @@ export function StoryMission() {
                   They handed you a product and walked away. You still managed the rest.
                 </p>
                 <p className="text-brand-black/60 leading-relaxed">
-                  The question that broke everything open: what if one entity — one name — owned the
+                  The question that broke everything open: what if one entity - one name - owned the
                   whole thing? Sourcing. Delivery. Invoicing. Accountability. All of it.
                 </p>
               </div>
@@ -187,7 +187,7 @@ export function StoryMission() {
             </div>
           </motion.div>
 
-          {/* ── ACT 03 — WHAT WE BUILT ────────────────────── */}
+          {/* ── ACT 03 - WHAT WE BUILT ────────────────────── */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +205,7 @@ export function StoryMission() {
             <div className="relative p-8 lg:p-12">
               <p className="text-[10px] font-extrabold uppercase tracking-[0.28em] text-brand-tealLight mb-6 flex items-center gap-2">
                 <Package className="h-3 w-3" />
-                Act 03 — What We Built
+                Act 03 - What We Built
               </p>
 
               <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
@@ -219,7 +219,7 @@ export function StoryMission() {
                     within 24 hours. We invoice under our name.
                   </p>
                   <p className="text-white/60 leading-relaxed">
-                    You get a live portal that shows every order, every rupee, across every outlet —
+                    You get a live portal that shows every order, every rupee, across every outlet -
                     in real time. No supplier juggling. No invoice nightmares. Just one name you trust
                     to get it right, every time.
                   </p>
@@ -261,7 +261,7 @@ export function StoryMission() {
                   The prime for every serious<br className="hidden lg:block" /> Indian business.
                 </h3>
                 <p className="text-brand-black/60 leading-relaxed max-w-lg">
-                  Offices, F&amp;B chains, hospitality groups, healthcare facilities across India — if your
+                  Offices, F&amp;B chains, hospitality groups, healthcare facilities across India - if your
                   team depends on facility supplies to operate, PrimeServe is the single name that keeps it
                   running. Order in one place. Receive in 24 hours. Control every rupee.
                 </p>
@@ -299,7 +299,7 @@ export function StoryMission() {
             </h3>
             <p className="mt-5 text-white/50 max-w-xl mx-auto leading-relaxed">
               Not a privilege reserved for large enterprises. A standard for any business that takes
-              operations seriously. One list. One delivery. One invoice — with total spend control built in.
+              operations seriously. One list. One delivery. One invoice - with total spend control built in.
             </p>
           </div>
         </motion.div>

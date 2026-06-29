@@ -16,7 +16,7 @@ const values = [
     icon: Target,
     name: "Accountability",
     description:
-      "One name on every PO, invoice, and DC — the same format, every time. Clean, consistent paperwork your accounting team can actually trust.",
+      "One name on every PO, invoice, and DC - the same format, every time. Clean, consistent paperwork your accounting team can actually trust.",
   },
   {
     icon: Zap,
